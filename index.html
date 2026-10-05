@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Tecnología para el Futuro</title>
+    <meta name="description" content="Aura desarrolla soluciones tecnológicas innovadoras. Descubre Skooling, nuestra plataforma insignia para la gestión inteligente de rutas escolares.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-text">AURA</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#skooling">Skooling</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <div class="badge">Innovación Tecnológica</div>
+                <h1>Conectando el presente con el <span>futuro</span></h1>
+                <p>En Aura, desarrollamos plataformas digitales diseñadas para optimizar operaciones críticas, aportando seguridad, eficiencia y tranquilidad a nuestros usuarios.</p>
+                <a href="#skooling" class="btn btn-primary">Descubre nuestro producto estrella</a>
+            </div>
+            <div class="hero-background">
+                <div class="glow-sphere sphere-1"></div>
+                <div class="glow-sphere sphere-2"></div>
+            </div>
+        </section>
+
+        <section id="skooling" class="product-section">
+            <div class="section-header">
+                <h2>Skooling</h2>
+                <p class="subtitle">La revolución en movilidad escolar</p>
+            </div>
+            
+            <div class="product-grid">
+                <div class="product-info">
+                    <p class="description">
+                        Skooling es nuestra plataforma integral que transforma la forma en que los colegios gestionan sus rutas escolares. 
+                        Brindamos paz mental a los padres y control absoluto a las instituciones.
+                    </p>
+                    <ul class="features-list">
+                        <li>
+                            <div class="feature-icon">📍</div>
+                            <div class="feature-text">
+                                <strong>Monitoreo en Tiempo Real</strong>
+                                <span>Seguimiento GPS exacto de la ubicación de los estudiantes.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-text">
+                                <strong>Seguridad Garantizada</strong>
+                                <span>Notificaciones automáticas y geocercas inteligentes.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-text">
+                                <strong>Comunicación Directa</strong>
+                                <span>Mensajería fluida entre padres, monitores y el colegio.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-visual">
+                    <div class="glass-card mockup-card">
+                        <div class="mockup-header">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="mockup-body">
+                            <h3>Ruta 4 - En progreso</h3>
+                            <div class="map-placeholder">
+                                <div class="pulse-marker"></div>
+                            </div>
+                            <div class="status-bar">Llegada estimada: 5 mins</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="about-section">
+            <div class="glass-card about-card">
+                <h2>Sobre Aura</h2>
+                <p>Somos un equipo de apasionados por la tecnología, enfocados en resolver problemas logísticos complejos a través del desarrollo de software intuitivo, escalable y robusto. Creemos que la innovación debe estar al servicio de la seguridad y el bienestar de la comunidad.</p>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-section">
+            <h2>Hablemos</h2>
+            <p>¿Interesado en implementar Skooling en tu institución o conocer más sobre Aura?</p>
+            <form id="contactForm" class="glass-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" required placeholder="Tu nombre completo">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" required placeholder="ejemplo@colegio.edu">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AURA</div>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+            </div>
+            <div class="footer-contact">
+                contacto@aurasi.co
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="year"></span> Aura. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

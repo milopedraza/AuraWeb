@@ -30,10 +30,6 @@ class AuraContact extends HTMLElement {
                     
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Contactar a Aura</button>
                 </form>
-
-                <div class="note">
-                    <strong>Información Corporativa Oficial:</strong> Todos los enlaces, contactos comerciales y detalles adicionales están en proceso de configuración y verificación oficial por parte de Aura.
-                </div>
             </div>
         </section>
         `;

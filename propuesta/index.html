@@ -26,6 +26,8 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
 
     body {
@@ -46,27 +48,29 @@
       width: 100%;
       background: rgba(12, 25, 48, 0.96);
       backdrop-filter: blur(14px);
-      padding: 12px 28px;
+      padding: 10px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
       border-bottom: 1px solid rgba(198, 161, 91, 0.25);
       color: white;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .brand-top {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       color: white;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .brand-top img {
-      height: 32px;
+      height: 30px;
       width: auto;
       object-fit: contain;
     }
@@ -75,26 +79,56 @@
       color: var(--accent-primary);
     }
 
+    /* VIEW SWITCHER PILLS */
+    .view-switcher {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 4px;
+    }
+
+    .view-tab {
+      background: transparent;
+      border: none;
+      color: #CBD5E0;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .view-tab.active {
+      background: var(--accent-primary);
+      color: var(--text-main);
+    }
+
     .nav-buttons {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .btn-ctrl {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 999px;
       cursor: pointer;
       font-family: inherit;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      text-decoration: none;
     }
 
     .btn-ctrl:hover {
@@ -103,14 +137,29 @@
       border-color: var(--accent-primary);
     }
 
+    .btn-ctrl.btn-gold {
+      background: linear-gradient(135deg, var(--accent-primary), #DFBE7F);
+      color: var(--text-main);
+      border-color: var(--accent-primary);
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(198, 161, 91, 0.35);
+    }
+
+    .btn-ctrl.btn-gold:hover {
+      background: #E8CB92;
+      transform: translateY(-1px);
+    }
+
     .slide-counter {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #A0AEC0;
-      min-width: 75px;
+      min-width: 68px;
       text-align: center;
     }
 
-    /* SLIDE CONTAINER (16:9) */
+    /* ===================================================================== */
+    /* SLIDE CONTAINER (16:9 PRESENTATION)                                   */
+    /* ===================================================================== */
     .deck-container {
       width: 100%;
       max-width: 1240px;
@@ -118,6 +167,11 @@
       display: flex;
       flex-direction: column;
       gap: 40px;
+    }
+
+    body.mode-proposal .deck-container,
+    body.mode-proposal .deck-nav-controls {
+      display: none !important;
     }
 
     .slide {
@@ -148,10 +202,11 @@
       height: 6px;
       width: 100%;
       background: linear-gradient(90deg, var(--accent-primary), #E6C887);
+      flex-shrink: 0;
     }
 
     .slide-content {
-      padding: 38px 52px;
+      padding: 34px 48px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -165,14 +220,15 @@
       color: var(--accent-primary);
       font-weight: 800;
       margin-bottom: 6px;
+      display: block;
     }
 
     .slide-title {
-      font-size: 32px;
+      font-size: 31px;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.18;
       color: var(--text-main);
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .slide.dark .slide-title {
@@ -180,9 +236,9 @@
     }
 
     .lead-text {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .slide.dark .lead-text {
@@ -193,7 +249,14 @@
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .grid-2-center {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
       align-items: center;
     }
 
@@ -230,7 +293,7 @@
     }
 
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 10px;
@@ -260,7 +323,7 @@
       height: auto;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(12, 25, 48, 0.15);
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       object-fit: cover;
     }
 
@@ -275,15 +338,98 @@
     }
 
     .phone-mockup-large:hover {
-      transform: translateY(-8px) scale(1.03);
+      transform: translateY(-6px) scale(1.02);
     }
 
-    .phone-centered-container {
+    /* Cropped wrapper for square mobile images with large white margins */
+    .phone-crop-box {
+      width: 225px;
+      height: 430px;
+      overflow: hidden;
+      border-radius: 26px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 28px;
-      margin: 10px 0;
+      justify-content: center;
+      position: relative;
+      filter: drop-shadow(0 18px 34px rgba(12, 25, 48, 0.28));
+      flex-shrink: 0;
+    }
+
+    .phone-crop-box img {
+      height: 460px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* SLIDE 6 (COMUNICACIÓN) TRANSVERSAL WEB CALENDAR SHOWCASE */
+    .comunicacion-stage {
+      position: relative;
+      width: 100%;
+      height: 435px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4px 0;
+    }
+
+    .calendar-web-transversal {
+      width: 740px;
+      max-width: 72%;
+      height: auto;
+      border-radius: 14px;
+      border: 2px solid rgba(198, 161, 91, 0.55);
+      box-shadow: 0 26px 60px rgba(12, 25, 48, 0.24);
+      transform: rotate(-1.6deg);
+      z-index: 2;
+      background: white;
+      transition: transform 0.3s ease;
+    }
+
+    .calendar-web-transversal:hover {
+      transform: rotate(0deg) scale(1.03);
+      z-index: 6;
+    }
+
+    .comunicacion-phone-left {
+      position: absolute;
+      left: 0;
+      bottom: 4px;
+      z-index: 3;
+      transform: rotate(-3deg);
+      transition: transform 0.3s ease;
+    }
+
+    .comunicacion-phone-left:hover {
+      transform: rotate(0deg) scale(1.04);
+      z-index: 7;
+    }
+
+    .comunicacion-phone-right {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      z-index: 3;
+      transform: rotate(3deg);
+      transition: transform 0.3s ease;
+    }
+
+    .comunicacion-phone-right:hover {
+      transform: rotate(0deg) scale(1.04);
+      z-index: 7;
+    }
+
+    .stage-caption-pill {
+      position: absolute;
+      background: var(--text-main);
+      color: white;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-primary);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+      z-index: 5;
+      white-space: nowrap;
     }
 
     .floating-report {
@@ -337,21 +483,22 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
     }
 
     .feature-list li {
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      font-size: 0.95rem;
-      line-height: 1.5;
+      font-size: 0.93rem;
+      line-height: 1.45;
     }
 
     .check-icon {
       color: var(--accent-primary);
       font-weight: bold;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
+      flex-shrink: 0;
     }
 
     /* RANGOS INTERACTIVOS (TAB SELECTOR) */
@@ -361,19 +508,19 @@
       background: rgba(255, 255, 255, 0.06);
       padding: 6px;
       border-radius: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .range-btn {
       flex: 1;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 8px;
       border: none;
       background: transparent;
       color: #A0AEC0;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -387,40 +534,380 @@
     }
 
     .price-main {
-      font-size: 2rem;
+      font-size: 1.9rem;
       font-weight: 800;
       color: var(--accent-primary);
-      margin: 8px 0 2px;
+      margin: 6px 0 2px;
     }
 
     .price-sub {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #A0AEC0;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    /* PRINT COMPATIBILITY */
+    /* ===================================================================== */
+    /* PROPUESTA COMERCIAL EJECUTIVA (4 HOJAS IMPRIMIBLES)                   */
+    /* ===================================================================== */
+    .proposal-container {
+      width: 100%;
+      max-width: 880px;
+      padding: 28px 20px 80px;
+      display: none;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
+    }
+
+    body.mode-proposal .proposal-container {
+      display: flex;
+    }
+
+    .proposal-page {
+      width: 8.5in;
+      min-height: 10.5in;
+      background: #FFFFFF;
+      color: var(--text-main);
+      border-radius: 10px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .prop-top-bar {
+      height: 5px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--text-main) 0%, var(--accent-primary) 65%, #E6C887 100%);
+      flex-shrink: 0;
+    }
+
+    .prop-body {
+      padding: 18px 28px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+
+    .prop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 4px;
+      min-height: 48px;
+    }
+
+    .prop-header-logos {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .prop-header-logos img.aura-h {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
+    }
+
+    .prop-header-logos img.skooling-h {
+      height: 30px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .prop-doc-meta {
+      text-align: right;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.25;
+    }
+
+    .prop-doc-meta strong {
+      color: var(--text-main);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .prop-hero-banner {
+      background: var(--text-main);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent-primary);
+    }
+
+    .prop-hero-banner h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 2px;
+      color: white;
+    }
+
+    .prop-hero-banner p {
+      font-size: 0.76rem;
+      color: #CBD5E0;
+      line-height: 1.32;
+    }
+
+    .prop-section-title {
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-main);
+      border-left: 3px solid var(--accent-primary);
+      padding-left: 7px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .prop-section-title span {
+      font-size: 0.68rem;
+      color: var(--accent-primary);
+      font-weight: 700;
+    }
+
+    .prop-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .prop-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .prop-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: #FAFBFD;
+    }
+
+    .prop-box.gold {
+      background: var(--gold-light);
+      border-color: var(--accent-primary);
+    }
+
+    .prop-box.dark {
+      background: var(--text-main);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+
+    .prop-box h3 {
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 3px;
+      color: var(--text-main);
+    }
+
+    .prop-box.dark h3 {
+      color: var(--accent-primary);
+    }
+
+    .prop-box p,
+    .prop-box li {
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: #334155;
+    }
+
+    .prop-box.dark p,
+    .prop-box.dark li {
+      color: #E2E8F0;
+    }
+
+    .prop-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .prop-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .prop-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.7rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .prop-table th {
+      background: var(--text-main);
+      color: white;
+      text-align: left;
+      padding: 4px 7px;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    .prop-table td {
+      padding: 4px 7px;
+      border-bottom: 1px solid var(--line);
+      color: #334155;
+      vertical-align: top;
+      line-height: 1.24;
+    }
+
+    .prop-table tr:nth-child(even) td {
+      background: #F8FAFC;
+    }
+
+    .prop-table tr.highlight-row td {
+      background: var(--gold-light);
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .prop-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .prop-journey-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+    }
+
+    .prop-journey-step {
+      background: #F8FAFC;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--accent-primary);
+      border-radius: 6px;
+      padding: 5px 6px;
+    }
+
+    .prop-journey-step strong {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .prop-journey-step p {
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      line-height: 1.22;
+    }
+
+    /* ===================================================================== */
+    /* PRINT RULES (SUPPORTS BOTH 15-SLIDE DECK & 4-PAGE PROPOSAL)           */
+    /* ===================================================================== */
     @media print {
-      body {
-        background: white;
+      html, body {
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
       }
+
       .top-controls {
         display: none !important;
       }
-      .deck-container {
-        padding: 0;
-        gap: 0;
+
+      /* MODE 1: PRINTING THE 15-SLIDE PRESENTATION */
+      body:not(.mode-proposal) .proposal-container {
+        display: none !important;
       }
-      .slide {
-        page-break-after: always;
-        break-after: page;
-        box-shadow: none;
-        border-radius: 0;
-        border: none;
-        margin: 0;
-        height: 100vh;
-        aspect-ratio: auto;
+
+      body:not(.mode-proposal) .deck-container {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
+
+      body:not(.mode-proposal) .slide {
+        width: 1280px !important;
+        height: 720px !important;
+        min-height: 720px !important;
+        max-height: 720px !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+        margin: 0 !important;
+      }
+
+      /* MODE 2: PRINTING THE 4-PAGE EXECUTIVE COMMERCIAL PROPOSAL */
+      body.mode-proposal .slide {
+        display: none !important;
+      }
+
+      body.mode-proposal .deck-container {
+        display: none !important;
+      }
+
+      body.mode-proposal .proposal-container {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: 0 !important;
+      }
+
+      body.mode-proposal .proposal-page {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        break-after: page !important;
+        page-break-after: always !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+      }
+
+      body.mode-proposal .proposal-page:last-child {
+        break-after: auto !important;
+        page-break-after: auto !important;
+      }
+    }
+  </style>
+  <style id="dynamic-print-page">
+    @page {
+      size: 1280px 720px;
+      margin: 0;
     }
   </style>
 </head>
@@ -430,19 +917,29 @@
   <header class="top-controls">
     <div class="brand-top">
       <img src="presentation_assets/Mountain_5.png" alt="AURA">
-      <span>AURA</span> | SKOOLING DECK
+      <div><span>AURA</span> | SKOOLING COMERCIAL</div>
+      <div class="view-switcher">
+        <button class="view-tab active" id="tab-deck" onclick="switchView('deck')">🖥️ Presentación (15 Slides)</button>
+        <button class="view-tab" id="tab-proposal" onclick="switchView('proposal')">📑 Propuesta Ejecutiva (4 Hojas)</button>
+      </div>
     </div>
 
     <div class="nav-buttons">
-      <a href="Propuesta_Comercial_Skooling_Aura.pptx" download class="btn-ctrl" style="text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">📊 Descargar PPTX</a>
-      <button class="btn-ctrl" onclick="window.print()">🖨️ Exportar PDF</button>
-      <button class="btn-ctrl" onclick="prevSlide()">◀ Anterior</button>
-      <span class="slide-counter" id="counterText">1 / 14</span>
-      <button class="btn-ctrl" onclick="nextSlide()">Siguiente ▶</button>
+      <button class="btn-ctrl btn-gold" onclick="exportProposalPDF()" title="Descargar o imprimir la Propuesta Comercial resumida de 4 hojas">📄 Descargar Propuesta (4 Hojas)</button>
+      <a href="Propuesta_Comercial_Skooling_Aura.pptx" download="Propuesta_Comercial_Skooling_Aura.pptx" class="btn-ctrl" title="Descargar las 15 diapositivas en formato PowerPoint (.pptx)">📊 Descargar PPTX (15 Slides)</a>
+      <button class="btn-ctrl" onclick="exportDeckPDF()" title="Exportar las 15 diapositivas completas en PDF formato 16:9">🖨️ Exportar Presentación PDF</button>
+      <span class="deck-nav-controls" style="display: inline-flex; align-items: center; gap: 6px;">
+        <button class="btn-ctrl" onclick="prevSlide()">◀</button>
+        <span class="slide-counter" id="counterText">1 / 15</span>
+        <button class="btn-ctrl" onclick="nextSlide()">▶</button>
+      </span>
     </div>
   </header>
 
-  <div class="deck-container">
+  <!-- ===================================================================== -->
+  <!-- CONTENEDOR 1: PRESENTACIÓN INTERACTIVA (15 DIAPOSITIVAS)              -->
+  <!-- ===================================================================== -->
+  <div class="deck-container" id="deckView">
 
     <!-- ===================================================================== -->
     <!-- SLIDE 1: PORTADA EJECUTIVA -->
@@ -451,28 +948,27 @@
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <!-- BRAND LOGOS (MOUNTAIN 5 + SKOOLING BRAND) -->
           <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px;">
             <img src="presentation_assets/Mountain_5.png" alt="Aura Logo" class="brand-logo-hero">
             <div style="width: 2px; height: 48px; background: rgba(198, 161, 91, 0.4);"></div>
             <img src="presentation_assets/logo-full-dark.png" alt="Skooling" class="brand-skooling-hero">
           </div>
           
-          <div class="eyebrow">PROPUESTA COMERCIAL & MODELO DE SERVICIO ANUAL</div>
+          <span class="eyebrow">PROPUESTA COMERCIAL & MODELO DE SERVICIO ANUAL</span>
           <h1 class="slide-title" style="font-size: 48px; margin-bottom: 8px;">SKOOLING</h1>
           <p style="font-size: 24px; color: var(--accent-primary); font-weight: 600; margin-bottom: 16px;">
             La vida escolar de tu comunidad, conectada en un solo lugar.
           </p>
-          <p class="lead-text" style="max-width: 840px;">
-            Plataforma integral SaaS de alto rendimiento para gestión académica, comunicación institucional certificada y monitoreo de rutas escolares en tiempo real.
+          <p class="lead-text" style="max-width: 860px;">
+            Ecosistema SaaS centralizado de alto rendimiento para gestión académica, comunicación institucional certificada y monitoreo satelital de rutas escolares en tiempo real.
           </p>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px;">
-          <div>
-            <span class="tech-pill">⚡ Arquitectura Cloud Nativa</span>
-            <span class="tech-pill">🔒 Seguridad Empresarial</span>
-            <span class="tech-pill">📱 iOS & Android Nativos</span>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <span class="tech-pill">⚡ Fuente Única de la Verdad</span>
+            <span class="tech-pill">🔒 Seguridad Empresarial Cloud</span>
+            <span class="tech-pill">📱 Portal Web + App iOS & Android</span>
           </div>
           <div style="text-align: right;">
             <p style="color: #A0AEC0; font-size: 0.9rem;">Desarrollado y respaldado por:</p>
@@ -484,55 +980,124 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 2: CONTEXTO, DOLOR Y TECNOLOGÍA MODERNA -->
+    <!-- SLIDE 2: EL DIAGNÓSTICO (DOS ESCENARIOS REALES PARA EL DECISOR)       -->
     <!-- ===================================================================== -->
     <section class="slide alt" id="slide-2">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <div class="eyebrow">Contexto & Solución de Ingeniería</div>
-          <h2 class="slide-title">¿Por qué modernizar la experiencia escolar hoy?</h2>
+          <span class="eyebrow">Diagnóstico Institucional & Caso de Negocio</span>
+          <h2 class="slide-title" style="margin-bottom: 8px;">Dos realidades en los colegios hoy: ¿En cuál está su institución?</h2>
+          <p class="lead-text" style="margin-bottom: 14px;">
+            Ya sea que su colegio opere de forma manual o utilice múltiples herramientas aisladas, el costo oculto en tiempo, desinformación y presupuesto es crítico.
+          </p>
         </div>
 
         <div class="grid-2">
-          <div class="card" style="border-left: 4px solid #E53E3E;">
-            <h3 class="card-title" style="color: #C53030;">El Reto Tradicional</h3>
-            <ul class="feature-list" style="color: var(--text-muted);">
-              <li>❌ <strong>Dispersión de canales:</strong> Grupos de WhatsApp informales, llamadas cruzadas a secretaría y circulares físicas que se extravían.</li>
-              <li>❌ <strong>Privacidad docente vulnerable:</strong> Profesores atendiendo mensajes personales a deshoras sin trazabilidad ni límites.</li>
-              <li>❌ <strong>Incertidumbre en transporte:</strong> Padres con angustia diaria sin saber la ubicación exacta ni la hora de llegada de la ruta escolar.</li>
-              <li>❌ <strong>Procesos desarticulados:</strong> Notas en archivos de Excel dispersos y sobrecarga administrativa en secretaría.</li>
-            </ul>
+          <!-- Escenario A -->
+          <div class="card" style="border-top: 4px solid #E53E3E; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="eyebrow" style="color: #C53030;">ESCENARIO A • COLEGIOS SIN PLATAFORMA ACTUAL</span>
+              <h3 class="card-title">De un "Gasto Nuevo" a una Inversión que se Paga Sola</h3>
+              <ul class="feature-list" style="color: var(--text-muted); margin-bottom: 12px;">
+                <li><span>❌</span> <div><strong>Operación en papel y Excel:</strong> Boletines manuales, circulares impresas que se pierden en las maletas y reprocesos en secretaría.</div></li>
+                <li><span>❌</span> <div><strong>Privacidad docente expuesta:</strong> Profesores atendiendo grupos de WhatsApp desde su celular personal fuera de horario laboral.</div></li>
+                <li><span>❌</span> <div><strong>Incertidumbre en rutas:</strong> Llamadas constantes a portería preguntando por qué no ha llegado el transporte escolar.</div></li>
+              </ul>
+            </div>
+            <div style="background: #FFF5F5; border-left: 3px solid #C53030; padding: 10px 12px; border-radius: 6px; font-size: 0.84rem; color: var(--text-main);">
+              <strong>✔ Valor con Skooling:</strong> Aporta un valor agregado inmediato mediante la comunicación directa con las familias, modernizando la gestión del colegio y reduciendo la carga operativa.
+            </div>
           </div>
 
-          <div class="card" style="border-left: 4px solid var(--accent-primary);">
-            <h3 class="card-title" style="color: var(--text-main);">La Solución con Skooling</h3>
-            <ul class="feature-list" style="color: var(--text-main);">
-              <li>✔ <strong>Portal Web Exclusivo:</strong> Panel de control optimizado para directivos, administrativos y docentes.</li>
-              <li>✔ <strong>App Móvil para Familias:</strong> Los acudientes consultan notas, comunicados y rutas exclusivamente desde la app móvil.</li>
-              <li>✔ <strong>Comunicación Oficial Protegida:</strong> Circulares digitales institucionales con trazabilidad y confirmación de lectura.</li>
-              <li>✔ <strong>Telemetría GPS en Vivo:</strong> Seguimiento en mapa de rutas escolares con alertas a una distancia determinada.</li>
-            </ul>
+          <!-- Escenario B -->
+          <div class="card" style="border-top: 4px solid var(--accent-primary); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="eyebrow">ESCENARIO B • COLEGIOS CON PLATAFORMAS FRAGMENTADAS</span>
+              <h3 class="card-title">El Problema Crítico de la Información "Regada"</h3>
+              <ul class="feature-list" style="color: var(--text-muted); margin-bottom: 12px;">
+                <li><span>⚠️</span> <div><strong>Múltiples canales desconectados:</strong> Avisos en la página web, otra plataforma para notas, una aplicación aparte para rutas escolares y además WhatsApp.</div></li>
+                <li><span>⚠️</span> <div><strong>Padres que pierden comunicados:</strong> Sin una <em>Única Fuente de la Verdad</em>, el acudiente debe buscar en 3 o 4 lugares distintos y omite información clave.</div></li>
+                <li><span>⚠️</span> <div><strong>Doble o triple facturación:</strong> Se pagan derechos de la plataforma del colegio más cobros adicionales por la app de transporte escolar.</div></li>
+              </ul>
+            </div>
+            <div style="background: var(--gold-light); border-left: 3px solid var(--accent-primary); padding: 10px 12px; border-radius: 6px; font-size: 0.84rem; color: var(--text-main);">
+              <strong>✔ Valor con Skooling:</strong> Centraliza notas, comunicaciones y GPS de rutas en <strong>1 sola App y 1 solo Portal</strong> bajo un único contrato institucional.
+            </div>
           </div>
         </div>
 
-        <div style="background: var(--text-main); color: white; padding: 14px 22px; border-radius: 12px; font-size: 0.95rem; display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(198, 161, 91, 0.3);">
+        <div style="background: var(--text-main); color: white; padding: 12px 20px; border-radius: 12px; font-size: 0.9rem; display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(198, 161, 91, 0.35);">
           <div>
-            🚀 <strong>Tecnología de Vanguardia:</strong> Construido con arquitectura de microservicios moderna en la nube de Google Cloud y base de datos serverless de alto rendimiento, garantizando alta disponibilidad, rapidez y cifrado estricto de datos.
+            🎯 <strong>El Diferenciador para el Decisor:</strong> Skooling elimina tanto la informalidad del papel/WhatsApp como el sobrecosto de tener múltiples proveedores desconectados.
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 3: ARQUITECTURA MODULAR CON LOGOS DE PRODUCTO -->
+    <!-- SLIDE 3 (NUEVO): EL PODER DE LA CENTRALIZACIÓN (FUENTE ÚNICA)         -->
     <!-- ===================================================================== -->
     <section class="slide" id="slide-3">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <div class="eyebrow">Arquitectura Progresiva</div>
-          <h2 class="slide-title">Tres niveles modulares adaptados a su necesidad</h2>
+          <span class="eyebrow">El Poder de la Centralización</span>
+          <h2 class="slide-title">Una Sola Fuente de la Verdad para el Colegio y las Familias</h2>
+        </div>
+
+        <div class="grid-2-journey">
+          <div>
+            <p class="lead-text" style="margin-bottom: 14px; color: var(--text-main); font-weight: 500;">
+              Cuando la información académica, las circulares y las rutas escolares viven en plataformas separadas, la comunidad sufre confusión y el colegio paga de más.
+            </p>
+            <ul class="feature-list" style="margin-bottom: 16px;">
+              <li>
+                <span class="check-icon">✔</span>
+                <div><strong>5 Dimensiones en 1 Sola App Móvil:</strong> Desde una única barra inferior (<em>Inicio, Clases, Agenda, Mensajes y Rutas</em>), el padre consulta todo sobre sus hijos sin cambiar de aplicación ni recordar múltiples contraseñas.</div>
+              </li>
+              <li>
+                <span class="check-icon">✔</span>
+                <div><strong>Cero Comunicados Ignorados:</strong> Las notificaciones de ruta, las circulares rectorales con acuse de recibo y los reportes académicos llegan al mismo centro oficial de alertas.</div>
+              </li>
+              <li>
+                <span class="check-icon">✔</span>
+                <div><strong>Base de Datos Única para la Administración:</strong> Registrar o actualizar la información de un estudiante sincroniza al instante sus cursos, su directorio de acudientes y su parada de ruta escolar.</div>
+              </li>
+              <li>
+                <span class="check-icon">✔</span>
+                <div><strong>Economía mediante un Único Contrato:</strong> La unificación de la plataforma brinda economía real a la institución al asumir un solo contrato anual en lugar de pagar múltiples sistemas por separado.</div>
+              </li>
+            </ul>
+
+            <div class="card" style="background: var(--gold-light); border-left: 4px solid var(--accent-primary); padding: 12px 16px; font-size: 0.88rem;">
+              <strong style="color: var(--text-main);">🏆 Profesionalismo y Seguridad Institucional:</strong>
+              <span style="color: #55451F;">Una comunidad que recibe toda su información oficial y el rastreo GPS de sus hijos en una sola plataforma percibe un colegio organizado, moderno y altamente confiable.</span>
+            </div>
+          </div>
+
+          <!-- VISUAL SHOWCASE: MOBILE_SAMPLE.PNG WITH CALLOUTS -->
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+            <div class="phone-crop-box" style="width: 245px; height: 465px;">
+              <img src="presentation_assets/Mobile_Sample.png" alt="App Unificada Skooling" style="height: 500px;">
+            </div>
+            <div style="margin-top: 8px; background: var(--text-main); color: var(--accent-primary); padding: 5px 14px; border-radius: 999px; font-size: 0.78rem; font-weight: 700;">
+              👆 1 Sola App: Inicio • Clases • Agenda • Mensajes • Rutas
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SLIDE 4: ARQUITECTURA MODULAR CON LOGOS DE PRODUCTO -->
+    <!-- ===================================================================== -->
+    <section class="slide alt" id="slide-4">
+      <div class="slide-accent-bar"></div>
+      <div class="slide-content">
+        <div>
+          <span class="eyebrow">Arquitectura Progresiva</span>
+          <h2 class="slide-title">Tres niveles modulares adaptados a la etapa de su colegio</h2>
         </div>
 
         <div class="grid-3">
@@ -543,9 +1108,9 @@
               <img src="presentation_assets/logo-icon.png" alt="Skooling Icon" style="height: 28px; width: auto;">
             </div>
             <h3 class="card-title">Core Académico</h3>
-            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px;">La base operativa digital del colegio.</p>
+            <p style="color: var(--text-muted); font-size: 0.86rem; margin-bottom: 12px;">Ideal para colegios que inician su digitalización académica.</p>
             <ul class="feature-list">
-              <li><span class="check-icon">✓</span> Matrículas, cursos y materias</li>
+              <li><span class="check-icon">✓</span> Gestión de Cursos y Asignaturas</li>
               <li><span class="check-icon">✓</span> <strong>Sistema de notas configurable</strong></li>
               <li><span class="check-icon">✓</span> Horarios semanales y validación de cruces</li>
               <li><span class="check-icon">✓</span> Calendario con festivos nacionales</li>
@@ -561,7 +1126,7 @@
               <img src="presentation_assets/logo-icon.png" alt="Skooling Icon" style="height: 28px; width: auto;">
             </div>
             <h3 class="card-title">Core + Mensajería</h3>
-            <p style="color: #7A622A; font-size: 0.88rem; margin-bottom: 14px;">Incluye Core + Comunicación Oficial.</p>
+            <p style="color: #7A622A; font-size: 0.86rem; margin-bottom: 12px;">Erradica la dispersión de avisos en web y WhatsApp.</p>
             <ul class="feature-list">
               <li><span class="check-icon">✓</span> <strong>Todo lo del Core Académico</strong></li>
               <li><span class="check-icon">✓</span> Comunicados masivos (Broadcasts)</li>
@@ -573,53 +1138,53 @@
           </div>
 
           <!-- Módulo 3 -->
-          <div class="card" style="border-color: var(--text-main);">
+          <div class="card" style="border-color: var(--text-main); border-width: 2px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <span class="eyebrow">Nivel 3</span>
+              <span class="eyebrow">Nivel 3 • Todo en Uno</span>
               <img src="presentation_assets/route_icon.png" alt="Route Icon" style="height: 28px; width: auto;">
             </div>
-            <h3 class="card-title">Full: Core + Mensajería + Transporte</h3>
-            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px;">Experiencia 100% integral.</p>
+            <h3 class="card-title">Full: Core + Mensajería + Rutas</h3>
+            <p style="color: var(--text-muted); font-size: 0.86rem; margin-bottom: 12px;">Reemplaza plataformas separadas por 1 ecosistema total.</p>
             <ul class="feature-list">
               <li><span class="check-icon">✓</span> <strong>Todo Core + Mensajería Oficial</strong></li>
               <li><span class="check-icon">✓</span> Mapa satelital en vivo con GPS</li>
               <li><span class="check-icon">✓</span> App para conductores y monitores</li>
               <li><span class="check-icon">✓</span> Alertas de cercanía a distancia configurable</li>
               <li><span class="check-icon">✓</span> Control de abordaje y desabordaje</li>
-              <li><span class="check-icon">✓</span> Máxima tranquilidad para las familias</li>
+              <li><span class="check-icon">✓</span> Unificación total sin cobros de terceros</li>
             </ul>
           </div>
         </div>
 
         <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-          Cada módulo superior incorpora automáticamente todos los beneficios de los niveles anteriores.
+          Cada módulo superior incorpora automáticamente todos los beneficios de los niveles anteriores en la misma aplicación.
         </p>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 4: CORE ACADÉMICO DETAIL -->
+    <!-- SLIDE 5: CORE ACADÉMICO DETAIL -->
     <!-- ===================================================================== -->
-    <section class="slide alt" id="slide-4">
+    <section class="slide" id="slide-5">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <div class="eyebrow">Módulo 1 • Core Académico</div>
+          <span class="eyebrow">Módulo 1 • Core Académico</span>
           <h2 class="slide-title">Gestión Académica Flexible, Precisa y Sin Papel</h2>
         </div>
 
-        <div class="grid-2">
+        <div class="grid-2-center">
           <div>
             <p class="lead-text" style="margin-bottom: 14px;">
-              Configuración total adaptada al manual de convivencia: escalas de calificación, periodos académicos y gestión ágil.
+              Configuración total adaptada al Proyecto Educativo Institucional (PEI): escalas de calificación, periodos académicos y generación documental en segundos.
             </p>
             <ul class="feature-list" style="margin-bottom: 16px;">
-              <li><span class="check-icon">✔</span> <strong>Sistema de Calificación Configurable:</strong> Adapte escalas numéricas o cualitativas, ponderaciones y periodos.</li>
-              <li><span class="check-icon">✔</span> <strong>Calificar "en la sala de tu hogar":</strong> Interfaz ultrarrápida para docentes desde cualquier dispositivo, con publicación controlada de boletines hacia la app móvil.</li>
-              <li><span class="check-icon">✔</span> <strong>Descargue Masivo de Boletines en PDF:</strong> Generación en lote lista para entrega física a acudientes o visualización en la app.</li>
-              <li><span class="check-icon">✔</span> <strong>Horarios y Cruces Automáticos:</strong> Validación de asignaturas de profesores en el portal web (Schedule).</li>
-              <li><span class="check-icon">✔</span> <strong>Faltas Justificadas e Injustificadas:</strong> Registro estructurado por periodo (con opción de mensaje instantáneo al padre).</li>
-              <li><span class="check-icon">✔</span> <strong>Cargue Masivo a 1 Clic:</strong> Importación de estudiantes, docentes y festivos nacionales en segundos.</li>
+              <li><span class="check-icon">✔</span> <div><strong>Sistema de Calificación Configurable:</strong> Adapte escalas numéricas o cualitativas, ponderaciones y periodos.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Calificar desde cualquier lugar:</strong> Interfaz ágil para docentes con publicación controlada de boletines hacia la app móvil.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Descargue Masivo de Boletines en PDF:</strong> Generación en lote lista para archivo oficial o visualización inmediata por los padres.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Horarios y Validación de Cruces:</strong> Asignación inteligente de bloques horarios sin choques de docentes.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Faltas Justificadas e Injustificadas:</strong> Registro estructurado por periodo con notificación instantánea al acudiente.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Cargue Masivo a 1 Clic:</strong> Importación de estudiantes, docentes y festivos nacionales en segundos.</div></li>
             </ul>
           </div>
 
@@ -633,47 +1198,54 @@
           </div>
         </div>
 
-        <div class="card" style="padding: 12px 20px; background: white; font-size: 0.9rem; border-left: 4px solid var(--accent-primary);">
-          <strong>🎯 Del Portal Web al Boletín Oficial:</strong> La directiva y el docente ingresan notas en la web (`reports.png`), generan boletines oficiales masivos (`PrintedReport.png`) y los padres consultan en tiempo real desde la app móvil.
+        <div class="card" style="padding: 12px 20px; background: var(--bg-dark); font-size: 0.9rem; border-left: 4px solid var(--accent-primary);">
+          <strong>🎯 Del Portal Web al Boletín Oficial:</strong> La directiva y el docente ingresan notas en la web, generan boletines oficiales masivos en PDF y los padres consultan en tiempo real desde la misma app móvil.
         </div>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 5: COMUNICACIÓN Y MENSAJERÍA (IMÁGENES AGRANDADAS Y CENTRADAS) -->
+    <!-- SLIDE 6: COMUNICACIÓN Y MENSAJERÍA (CALENDARIO WEB TRANSVERSAL GRANDE)-->
     <!-- ===================================================================== -->
-    <section class="slide" id="slide-5">
+    <section class="slide alt" id="slide-6">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div style="text-align: center;">
-          <div class="eyebrow">Módulo 2 • Comunicación & Comunidad</div>
-          <h2 class="slide-title" style="margin-bottom: 8px;">Canal Oficial Protegido: Conexión Segura e Instantánea</h2>
-          <p class="lead-text" style="max-width: 850px; margin: 0 auto 12px;">
-            Circulares digitales con confirmación de lectura, calendario escolar institucional y mensajes oficiales sin exponer el WhatsApp personal de los docentes.
+          <span class="eyebrow">Módulo 2 • Comunicación & Comunidad</span>
+          <h2 class="slide-title" style="margin-bottom: 4px;">Canal Oficial Protegido y Calendario Maestro Sincronizado</h2>
+          <p class="lead-text" style="max-width: 920px; margin: 0 auto;">
+            Lo que la coordinación programa en el <strong>Calendario Maestro Web</strong> o envía por <strong>Broadcast</strong> impacta al instante en el teléfono de cada familia con confirmación de lectura.
           </p>
         </div>
 
-        <!-- IMÁGENES GRANDES Y CENTRADAS -->
-        <div class="phone-centered-container">
-          <div style="text-align: center;">
-            <img src="presentation_assets/Broadcast_mobile.png" alt="Circular Oficial Móvil" class="phone-mockup-large" style="height: 380px;" title="Circular Oficial con Confirmación de Lectura">
-            <span style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Circulares & Broadcasts</span>
+        <!-- ESCENARIO TRANSVERSAL: CALENDARIO WEB GIGANTE EN EL CENTRO + 2 MÓVILES LATERALES -->
+        <div class="comunicacion-stage">
+          <!-- Móvil Izquierdo: Circulares / Broadcast -->
+          <div class="comunicacion-phone-left">
+            <div class="phone-crop-box" style="width: 215px; height: 410px;">
+              <img src="presentation_assets/Broadcast_mobile.png" alt="Circular Oficial Móvil" style="height: 445px;">
+            </div>
+            <span class="stage-caption-pill" style="bottom: -10px; left: 18px;">📱 Circulares & Broadcasts</span>
           </div>
 
-          <div style="text-align: center;">
-            <img src="presentation_assets/calendar.png" alt="Calendario Web" class="mockup-web" style="max-width: 380px; max-height: 240px; margin-bottom: 12px;" title="Calendario Escolar en la Web">
-            <span style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-main);">Calendario Maestro Web</span>
-          </div>
+          <!-- Calendario Web Grande y Transversal (Protagonista) -->
+          <img src="presentation_assets/calendar.png" alt="Calendario Escolar Maestro Web" class="calendar-web-transversal" title="Calendario Escolar Maestro en el Portal Web">
+          <span class="stage-caption-pill" style="top: 6px; left: 50%; transform: translateX(-50%); background: var(--accent-primary); color: var(--text-main);">
+            💻 Portal Web: Calendario Maestro de Eventos, Tareas y Actividades
+          </span>
 
-          <div style="text-align: center;">
-            <img src="presentation_assets/Calendar_Mobile.png" alt="Calendario Móvil" class="phone-mockup-large" style="height: 380px;" title="Calendario en la App Móvil de la Familia">
-            <span style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 6px;">Eventos en la App Móvil</span>
+          <!-- Móvil Derecho: Calendario en la App -->
+          <div class="comunicacion-phone-right">
+            <div class="phone-crop-box" style="width: 215px; height: 410px;">
+              <img src="presentation_assets/Calendar_Mobile.png" alt="Calendario Móvil" style="height: 445px;">
+            </div>
+            <span class="stage-caption-pill" style="bottom: -10px; right: 22px;">📱 Agenda Sincronizada</span>
           </div>
         </div>
 
-        <div style="display: flex; justify-content: center; gap: 24px; font-size: 0.9rem; color: var(--text-main); font-weight: 600;">
+        <div style="display: flex; justify-content: center; gap: 24px; font-size: 0.88rem; color: var(--text-main); font-weight: 700; padding-top: 4px;">
           <span>✔ Confirmación de lectura certificada</span>
-          <span>✔ Autenticación Google / Apple a 1 clic</span>
+          <span>✔ Sin exponer WhatsApp docente</span>
           <span>✔ Notificaciones Push nativas</span>
           <span>✔ Trazabilidad legal y horaria</span>
         </div>
@@ -681,33 +1253,32 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 6: MOVILIDAD Y RUTAS ESCOLARES -->
+    <!-- SLIDE 7: MOVILIDAD Y RUTAS ESCOLARES -->
     <!-- ===================================================================== -->
-    <section class="slide alt" id="slide-6">
+    <section class="slide" id="slide-7">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <div class="eyebrow">Módulo 3 • Movilidad & Rutas Escolares</div>
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
-            <h2 class="slide-title" style="margin-bottom: 0;">Seguridad y Trazabilidad en Cada Recorrido</h2>
+          <span class="eyebrow">Módulo 3 • Movilidad & Rutas Escolares</span>
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 10px;">
+            <h2 class="slide-title" style="margin-bottom: 0;">Seguridad y Trazabilidad en Cada Recorrido (Integrado)</h2>
             <img src="presentation_assets/logo-full-Route.png" alt="Skooling RouteManager" style="height: 38px; width: auto; object-fit: contain;">
           </div>
         </div>
 
-        <div class="grid-2">
+        <div class="grid-2-center">
           <div>
             <p class="lead-text" style="margin-bottom: 14px;">
-              El transporte escolar deja de ser un motivo de angustia para convertirse en el mayor sello de tranquilidad y prestigio de su institución.
+              A diferencia de los colegios donde el transporte se maneja en una app externa desconectada (o sin rastreo), <strong>Skooling RouteManager</strong> viene integrado en la misma app de los padres.
             </p>
             <ul class="feature-list" style="margin-bottom: 16px;">
-              <li><span class="check-icon">✔</span> <strong>Mapa Satelital en Vivo (Routes.png):</strong> Los acudientes visualizan en tiempo real el desplazamiento exacto del vehículo escolar desde la app móvil.</li>
-              <li><span class="check-icon">✔</span> <strong>Alertas a Distancia Determinada:</strong> Notificación automática al teléfono del acudiente cuando la ruta se aproxima a la parada.</li>
-              <li><span class="check-icon">✔</span> <strong>App para Conductores y Monitores:</strong> Registro digital y control de abordaje y desabordaje de cada alumno por parada.</li>
-              <li><span class="check-icon">✔</span> <strong>Cero Congestión Telefónica:</strong> Elimina las llamadas constantes de padres preocupados a la portería o directivas por demoras imprevistas de tráfico.</li>
+              <li><span class="check-icon">✔</span> <div><strong>Mapa Satelital en Vivo:</strong> Los acudientes visualizan en tiempo real el desplazamiento exacto del vehículo escolar sin instalar otra aplicación ni pagar membresías aparte.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Alertas a Distancia Determinada:</strong> Notificación automática al teléfono del acudiente cuando la ruta se aproxima a su paradero.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>App para Conductores y Monitores:</strong> Registro digital y control de abordaje y desabordaje de cada alumno por parada.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Cero Congestión Telefónica:</strong> Elimina las llamadas constantes de padres preocupados a portería o secretaría por demoras de tráfico.</div></li>
             </ul>
           </div>
 
-          <!-- Phone Mockup with REAL Live Map (Routes.png) -->
           <div style="display: flex; justify-content: center; align-items: center;">
             <div style="position: relative;">
               <img src="presentation_assets/Routes.png" alt="Rutas en Vivo" class="phone-mockup-large" style="height: 420px;" title="Seguimiento GPS satelital en vivo con paradas y telemetría">
@@ -716,117 +1287,117 @@
           </div>
         </div>
 
-        <div class="card" style="padding: 12px 20px; background: white; font-size: 0.92rem; border-left: 4px solid var(--accent-primary);">
-          <strong>⭐ Valor Incalculable para la Comunidad:</strong> Genera total confianza y trazabilidad a los padres de familia, aportando un inmenso valor a la reputación, fidelización de matrícula y tranquilidad de la institución.
+        <div class="card" style="padding: 12px 20px; background: var(--bg-dark); font-size: 0.9rem; border-left: 4px solid var(--accent-primary);">
+          <strong>⭐ Sin Doble Proveedor:</strong> El colegio no necesita contratar una plataforma académica por un lado y otra empresa de monitoreo de buses por otro; todo está sincronizado en Skooling.
         </div>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 7: JOURNEY PASO 1 • ANTES DE LA JORNADA -->
-    <!-- ===================================================================== -->
-    <section class="slide" id="slide-7">
-      <div class="slide-accent-bar"></div>
-      <div class="slide-content">
-        <div>
-          <span class="step-pill">ETAPA 01 DE 05 • LA MAÑANA</span>
-          <div class="eyebrow">Acompañamiento 360° • Antes de Salir</div>
-          <h2 class="slide-title">"¿Qué tiene hoy mi hijo?" — Planificación Matutina</h2>
-        </div>
-
-        <div class="grid-2-journey">
-          <div>
-            <p class="lead-text" style="font-size: 1.15rem; margin-bottom: 20px; color: var(--text-main);">
-              La tranquilidad de la familia comienza desde la primera hora de la mañana, eliminando dudas y contratiempos.
-            </p>
-            <ul class="feature-list" style="margin-bottom: 24px;">
-              <li><span class="check-icon">✔</span> <strong>Horario Semanal al Instante:</strong> Consulta desde la cama o el desayuno de las materias correspondientes al día.</li>
-              <li><span class="check-icon">✔</span> <strong>Tareas y Materiales Claros:</strong> Verificación de los deberes pendientes y entregas asignadas para evitar olvidos de última hora.</li>
-              <li><span class="check-icon">✔</span> <strong>Uniformes y Requerimientos:</strong> Información oficial del colegio sobre días de educación física o eventos especiales.</li>
-            </ul>
-            <div class="card" style="background: var(--bg-dark); border-left: 4px solid var(--accent-primary); padding: 16px;">
-              <em style="color: var(--text-main);">"Los padres preparan la maleta y el día escolar de sus hijos con total certidumbre y sin revisar agendas físicas deterioradas."</em>
-            </div>
-          </div>
-
-          <div style="display: flex; justify-content: center;">
-            <img src="presentation_assets/Mobile_Schedule.png" alt="Horario Escolar Móvil" class="phone-mockup-large" style="height: 480px;">
-          </div>
-        </div>
-
-        <div style="font-size: 0.88rem; color: var(--text-muted); text-align: center;">
-          Skooling acompaña cada instante de la experiencia escolar de la comunidad.
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================== -->
-    <!-- SLIDE 8: JOURNEY PASO 2 • SALIDA Y RUTA ESCOLAR -->
+    <!-- SLIDE 8: JOURNEY PASO 1 • ANTES DE LA JORNADA -->
     <!-- ===================================================================== -->
     <section class="slide alt" id="slide-8">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <span class="step-pill">ETAPA 02 DE 05 • EL TRAYECTO</span>
-          <div class="eyebrow">Acompañamiento 360° • Movilidad Segura</div>
-          <h2 class="slide-title">"¿A qué hora llega la ruta?" — Telemetría GPS en Vivo</h2>
+          <span class="step-pill">ETAPA 01 DE 05 • LA MAÑANA</span>
+          <span class="eyebrow">Acompañamiento 360° • Antes de Salir</span>
+          <h2 class="slide-title">"¿Qué tiene hoy mi hijo?" — Planificación Matutina</h2>
         </div>
 
         <div class="grid-2-journey">
           <div>
-            <p class="lead-text" style="font-size: 1.15rem; margin-bottom: 20px; color: var(--text-main);">
-              Rastreo satelital del bus escolar en tiempo real sobre mapa interactivo, sin esperas a la intemperie.
+            <p class="lead-text" style="font-size: 1.12rem; margin-bottom: 18px; color: var(--text-main);">
+              La tranquilidad de la familia comienza desde la primera hora de la mañana, consultando todo en una sola fuente oficial.
             </p>
-            <ul class="feature-list" style="margin-bottom: 24px;">
-              <li><span class="check-icon">✔</span> <strong>Ubicación Satelital en Tiempo Real:</strong> El padre observa en el mapa cómo avanza el vehículo ruta hacia su parada.</li>
-              <li><span class="check-icon">✔</span> <strong>Alertas de Proximidad Automáticas:</strong> Aviso en el móvil cuando el bus se encuentra a una distancia determinada.</li>
-              <li><span class="check-icon">✔</span> <strong>Control de Abordaje por Parada:</strong> El monitor registra la subida del estudiante garantizando su seguridad.</li>
+            <ul class="feature-list" style="margin-bottom: 22px;">
+              <li><span class="check-icon">✔</span> <div><strong>Horario Semanal al Instante:</strong> Consulta inmediata de las asignaturas correspondientes al día desde el celular.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Tareas y Materiales Claros:</strong> Verificación de deberes pendientes y entregas asignadas para evitar olvidos de última hora.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Uniformes y Requerimientos:</strong> Información oficial del colegio sobre días de educación física o actividades especiales.</div></li>
             </ul>
-            <div class="card" style="background: white; border-left: 4px solid var(--accent-primary); padding: 16px;">
-              <em style="color: var(--text-main);">"Se acabó la incertidumbre de salir a esperar sin saber si la ruta ya pasó o viene con retraso por el tráfico."</em>
+            <div class="card" style="background: white; border-left: 4px solid var(--accent-primary); padding: 15px;">
+              <em style="color: var(--text-main);">"Los padres preparan la maleta y el día escolar de sus hijos con total certidumbre, sin buscar en chats de otros papás."</em>
             </div>
           </div>
 
           <div style="display: flex; justify-content: center;">
-            <img src="presentation_assets/Routes.png" alt="Ruta en Vivo" class="phone-mockup-large" style="height: 480px;">
+            <img src="presentation_assets/Mobile_Schedule.png" alt="Horario Escolar Móvil" class="phone-mockup-large" style="height: 470px;">
           </div>
         </div>
 
         <div style="font-size: 0.88rem; color: var(--text-muted); text-align: center;">
-          Skooling RouteManager: Confianza plena para las familias en cada trayecto.
+          Skooling acompaña cada instante de la experiencia escolar de la comunidad en una única aplicación.
         </div>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 9: JOURNEY PASO 3 • EN EL COLEGIO -->
+    <!-- SLIDE 9: JOURNEY PASO 2 • SALIDA Y RUTA ESCOLAR -->
     <!-- ===================================================================== -->
     <section class="slide" id="slide-9">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
+          <span class="step-pill">ETAPA 02 DE 05 • EL TRAYECTO</span>
+          <span class="eyebrow">Acompañamiento 360° • Movilidad Segura</span>
+          <h2 class="slide-title">"¿A qué hora llega la ruta?" — Telemetría GPS en Vivo</h2>
+        </div>
+
+        <div class="grid-2-journey">
+          <div>
+            <p class="lead-text" style="font-size: 1.12rem; margin-bottom: 18px; color: var(--text-main);">
+              Sin salir de la misma app del colegio, el padre abre la pestaña <strong>Rutas</strong> y visualiza el recorrido satelital del bus en tiempo real.
+            </p>
+            <ul class="feature-list" style="margin-bottom: 22px;">
+              <li><span class="check-icon">✔</span> <div><strong>Ubicación Satelital en Tiempo Real:</strong> El acudiente observa en el mapa cómo avanza el vehículo hacia su parada.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Alertas de Proximidad Automáticas:</strong> Aviso en el móvil cuando el bus se encuentra a una distancia determinada.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Control de Abordaje por Parada:</strong> El monitor registra la subida del estudiante garantizando su seguridad.</div></li>
+            </ul>
+            <div class="card" style="background: var(--bg-dark); border-left: 4px solid var(--accent-primary); padding: 15px;">
+              <em style="color: var(--text-main);">"Se acabó la incertidumbre de salir a esperar a la intemperie o tener que pagar una aplicación de transporte por aparte."</em>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: center;">
+            <img src="presentation_assets/Routes.png" alt="Ruta en Vivo" class="phone-mockup-large" style="height: 470px;">
+          </div>
+        </div>
+
+        <div style="font-size: 0.88rem; color: var(--text-muted); text-align: center;">
+          Skooling RouteManager: Confianza plena para las familias integrada nativamente con el colegio.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SLIDE 10: JOURNEY PASO 3 • EN EL COLEGIO -->
+    <!-- ===================================================================== -->
+    <section class="slide alt" id="slide-10">
+      <div class="slide-accent-bar"></div>
+      <div class="slide-content">
+        <div>
           <span class="step-pill">ETAPA 03 DE 05 • LA JORNADA</span>
-          <div class="eyebrow">Acompañamiento 360° • Vida Académica</div>
+          <span class="eyebrow">Acompañamiento 360° • Vida Académica</span>
           <h2 class="slide-title">"¿Cómo va la jornada?" — Seguimiento y Observaciones</h2>
         </div>
 
         <div class="grid-2-journey">
           <div>
-            <p class="lead-text" style="font-size: 1.15rem; margin-bottom: 20px; color: var(--text-main);">
-              Seguimiento transparente del desempeño académico, eventos del día y el observador del alumno.
+            <p class="lead-text" style="font-size: 1.12rem; margin-bottom: 18px; color: var(--text-main);">
+              Seguimiento transparente del desempeño académico, eventos del día y el observador del alumno en tiempo real.
             </p>
-            <ul class="feature-list" style="margin-bottom: 24px;">
-              <li><span class="check-icon">✔</span> <strong>Observaciones Pedagógicas y Convivenciales:</strong> Anotaciones formales del docente visibles para el acudiente con trazabilidad.</li>
-              <li><span class="check-icon">✔</span> <strong>Registro de Calificaciones Parciales:</strong> Los acudientes conocen el avance de sus hijos de manera periódica.</li>
-              <li><span class="check-icon">✔</span> <strong>Eventos y Fechas Institucionales:</strong> Calendario escolar actualizado con días conmemorativos, ferias y evaluaciones.</li>
+            <ul class="feature-list" style="margin-bottom: 22px;">
+              <li><span class="check-icon">✔</span> <div><strong>Observaciones Pedagógicas y Convivenciales:</strong> Anotaciones formales del docente visibles para el acudiente con trazabilidad.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Registro de Calificaciones Parciales:</strong> Los acudientes conocen el avance de sus hijos oportunamente antes del cierre de periodo.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Eventos y Fechas Institucionales:</strong> Calendario escolar sincronizado con días conmemorativos, salidas y evaluaciones.</div></li>
             </ul>
-            <div class="card" style="background: var(--bg-dark); border-left: 4px solid var(--accent-primary); padding: 16px;">
+            <div class="card" style="background: white; border-left: 4px solid var(--accent-primary); padding: 15px;">
               <em style="color: var(--text-main);">"La familia se siente verdaderamente involucrada y enterada del progreso formativo diario de su hijo."</em>
             </div>
           </div>
 
           <div style="display: flex; justify-content: center;">
-            <img src="presentation_assets/Observations.png" alt="Observaciones Móvil" class="phone-mockup-large" style="height: 480px;">
+            <img src="presentation_assets/Observations.png" alt="Observaciones Móvil" class="phone-mockup-large" style="height: 470px;">
           </div>
         </div>
 
@@ -837,34 +1408,34 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 10: JOURNEY PASO 4 • COMUNICACIÓN DIRECTA -->
+    <!-- SLIDE 11: JOURNEY PASO 4 • COMUNICACIÓN DIRECTA -->
     <!-- ===================================================================== -->
-    <section class="slide alt" id="slide-10">
+    <section class="slide" id="slide-11">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
           <span class="step-pill">ETAPA 04 DE 05 • LA COMUNICACIÓN</span>
-          <div class="eyebrow">Acompañamiento 360° • Canal Institucional</div>
-          <h2 class="slide-title">"¿Necesito hablar con el colegio?" — Mensaje Directo</h2>
+          <span class="eyebrow">Acompañamiento 360° • Canal Institucional</span>
+          <h2 class="slide-title">"¿Necesito hablar con el colegio?" — Mensaje Oficial</h2>
         </div>
 
         <div class="grid-2-journey">
           <div>
-            <p class="lead-text" style="font-size: 1.15rem; margin-bottom: 20px; color: var(--text-main);">
-              Canal oficial directo entre familias, docentes y directivas sin intermediarios ni grupos informales.
+            <p class="lead-text" style="font-size: 1.12rem; margin-bottom: 18px; color: var(--text-main);">
+              Canal oficial directo entre familias, docentes y directivas sin intermediarios, sin rumores en grupos de WhatsApp y sin información dispersa.
             </p>
-            <ul class="feature-list" style="margin-bottom: 24px;">
-              <li><span class="check-icon">✔</span> <strong>Circulares y Comunicados Oficiales:</strong> Emisión de información institucional con confirmación de lectura en tiempo real.</li>
-              <li><span class="check-icon">✔</span> <strong>Protección de Privacidad Docente:</strong> Comunicación efectiva respetando el horario escolar sin compartir números de celular.</li>
-              <li><span class="check-icon">✔</span> <strong>Soporte y Respuesta Rápida:</strong> Resolución oportuna de dudas académicas o administrativas con respaldo formal.</li>
+            <ul class="feature-list" style="margin-bottom: 22px;">
+              <li><span class="check-icon">✔</span> <div><strong>Circulares y Comunicados Oficiales:</strong> Emisión de información institucional con confirmación de lectura en tiempo real.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Protección de Privacidad Docente:</strong> Comunicación efectiva respetando el horario escolar sin compartir números de celular.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Soporte y Respuesta Rápida:</strong> Resolución oportuna de dudas académicas o administrativas con respaldo formal.</div></li>
             </ul>
-            <div class="card" style="background: white; border-left: 4px solid var(--accent-primary); padding: 16px;">
-              <em style="color: var(--text-main);">"Adiós a las cadenas interminables de WhatsApp: cada comunicado llega a quien corresponde y queda registrado."</em>
+            <div class="card" style="background: var(--bg-dark); border-left: 4px solid var(--accent-primary); padding: 15px;">
+              <em style="color: var(--text-main);">"Adiós a las cadenas informales de WhatsApp y a los avisos perdidos en la web: cada comunicado llega a quien corresponde."</em>
             </div>
           </div>
 
           <div style="display: flex; justify-content: center;">
-            <img src="presentation_assets/Broadcast_mobile.png" alt="Comunicados Oficiales Móvil" class="phone-mockup-large" style="height: 480px;">
+            <img src="presentation_assets/Broadcast_mobile.png" alt="Comunicados Oficiales Móvil" class="phone-mockup-large" style="height: 470px;">
           </div>
         </div>
 
@@ -875,34 +1446,34 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 11: JOURNEY PASO 5 • REGRESO SEGURO -->
+    <!-- SLIDE 12: JOURNEY PASO 5 • REGRESO SEGURO -->
     <!-- ===================================================================== -->
-    <section class="slide" id="slide-11">
+    <section class="slide alt" id="slide-12">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
           <span class="step-pill">ETAPA 05 DE 05 • EL RETORNO</span>
-          <div class="eyebrow">Acompañamiento 360° • Cierre de Jornada</div>
+          <span class="eyebrow">Acompañamiento 360° • Cierre de Jornada</span>
           <h2 class="slide-title">"¿Ya viene de camino?" — Retorno Seguro al Hogar</h2>
         </div>
 
         <div class="grid-2-journey">
           <div>
-            <p class="lead-text" style="font-size: 1.15rem; margin-bottom: 20px; color: var(--text-main);">
+            <p class="lead-text" style="font-size: 1.12rem; margin-bottom: 18px; color: var(--text-main);">
               La jornada concluye con la certeza del regreso seguro del estudiante hasta la puerta de su casa.
             </p>
-            <ul class="feature-list" style="margin-bottom: 24px;">
-              <li><span class="check-icon">✔</span> <strong>Notificación Push de Abordaje:</strong> El acudiente recibe una alerta inmediata en su móvil cuando el alumno sube al transporte escolar.</li>
-              <li><span class="check-icon">✔</span> <strong>Seguimiento en Vivo del Retorno:</strong> Monitoreo del trayecto de vuelta a casa para recibir al estudiante a tiempo.</li>
-              <li><span class="check-icon">✔</span> <strong>Centro de Notificaciones Centralizado:</strong> Historial completo de avisos de llegada, circulares y notas del día.</li>
+            <ul class="feature-list" style="margin-bottom: 22px;">
+              <li><span class="check-icon">✔</span> <div><strong>Notificación Push de Abordaje:</strong> El acudiente recibe una alerta inmediata en su móvil cuando el alumno sube al transporte escolar.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Seguimiento en Vivo del Retorno:</strong> Monitoreo del trayecto de vuelta a casa para recibir al estudiante a tiempo.</div></li>
+              <li><span class="check-icon">✔</span> <div><strong>Centro de Notificaciones Centralizado:</strong> Historial completo de avisos de llegada, circulares y notas del día en el mismo lugar.</div></li>
             </ul>
-            <div class="card" style="background: var(--bg-dark); border-left: 4px solid var(--accent-primary); padding: 16px;">
+            <div class="card" style="background: white; border-left: 4px solid var(--accent-primary); padding: 15px;">
               <em style="color: var(--text-main);">"Paz mental total para los acudientes: desde la salida matutina hasta el regreso seguro al hogar."</em>
             </div>
           </div>
 
           <div style="display: flex; justify-content: center;">
-            <img src="presentation_assets/Notifications.png" alt="Notificaciones de Retorno" class="phone-mockup-large" style="height: 480px;">
+            <img src="presentation_assets/Notifications.png" alt="Notificaciones de Retorno" class="phone-mockup-large" style="height: 470px;">
           </div>
         </div>
 
@@ -913,16 +1484,16 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 12: INVERSIÓN ANUAL POR RANGOS DE ESTUDIANTES -->
+    <!-- SLIDE 13: INVERSIÓN ANUAL POR RANGOS DE ESTUDIANTES -->
     <!-- ===================================================================== -->
-    <section class="slide dark" id="slide-12">
+    <section class="slide dark" id="slide-13">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <div class="eyebrow">Modelo de Inversión Anual</div>
-          <h2 class="slide-title" style="margin-bottom: 8px;">Tarifas Institucionales por Rango de Estudiantes</h2>
-          <p style="color: #A0AEC0; font-size: 0.95rem; margin-bottom: 14px;">
-            Planes anuales cerrados por tramos de matrícula, presupuestables para el año lectivo institucional.
+          <span class="eyebrow">Modelo de Inversión Anual Todo-en-Uno</span>
+          <h2 class="slide-title" style="margin-bottom: 6px;">Tarifas Institucionales por Rango de Estudiantes</h2>
+          <p style="color: #A0AEC0; font-size: 0.92rem; margin-bottom: 12px;">
+            Planes anuales cerrados por rango de estudiantes: <strong>un único contrato centralizado más económico que asumir múltiples plataformas por separado</strong>.
           </p>
         </div>
 
@@ -939,17 +1510,17 @@
           <div class="card dark">
             <span class="eyebrow">PLAN 1</span>
             <h3 class="card-title">Core Académico</h3>
-            <div class="price-main" id="displayCore">$4'800.000 COP</div>
-            <div class="price-sub" id="subCore">Tarifa fija por año lectivo</div>
-            <ul class="feature-list" style="font-size: 0.85rem; margin-bottom: 14px;">
+            <div class="price-main" id="displayCore">$6'500.000 COP</div>
+            <div class="price-sub" id="subCore">Tarifa anual fija (151 a 250 alumnos)</div>
+            <ul class="feature-list" style="font-size: 0.84rem; margin-bottom: 12px;">
+              <li>✓ Gestión de cursos y asignaturas</li>
               <li>✓ Sistema de notas configurable</li>
+              <li>✓ Boletines PDF masivos a 1 clic</li>
               <li>✓ Horarios dinámicos y festivos</li>
-              <li>✓ Cargue y descargue masivo de datos</li>
-              <li>✓ Portal web docentes y directivos</li>
               <li>✓ Faltas justificadas e injustificadas</li>
             </ul>
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-size: 0.82rem; color: #A0AEC0;">
-              Ideal para digitalizar la secretaría académica.
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-size: 0.8rem; color: #A0AEC0;">
+              Ideal para digitalizar la gestión académica.
             </div>
           </div>
 
@@ -957,84 +1528,84 @@
           <div class="card dark">
             <span class="eyebrow">PLAN 2</span>
             <h3 class="card-title">Core + Mensajería</h3>
-            <div class="price-main" id="displayMsg">$7'200.000 COP</div>
-            <div class="price-sub" id="subMsg">Tarifa fija por año lectivo</div>
-            <ul class="feature-list" style="font-size: 0.85rem; margin-bottom: 14px;">
+            <div class="price-main" id="displayMsg">$9'500.000 COP</div>
+            <div class="price-sub" id="subMsg">Tarifa anual fija (151 a 250 alumnos)</div>
+            <ul class="feature-list" style="font-size: 0.84rem; margin-bottom: 12px;">
               <li>✓ Todo lo de Core Académico</li>
               <li>✓ Comunicados masivos (Broadcasts)</li>
               <li>✓ Chat protegido profesor-acudiente</li>
               <li>✓ Circulares con confirmación de lectura</li>
-              <li>✓ Calendario de eventos con alerta directa</li>
+              <li>✓ Calendario maestro sincronizado</li>
             </ul>
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-size: 0.82rem; color: #A0AEC0;">
-              Comunicación oficial protegida y sin WhatsApp.
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-size: 0.8rem; color: #A0AEC0;">
+              Elimina el WhatsApp y centraliza anuncios.
             </div>
           </div>
 
           <!-- Plan 3 (Recomendado) -->
           <div class="card highlight">
-            <span class="eyebrow" style="color: #FFD700;">PLAN 3 • RECOMENDADO</span>
+            <span class="eyebrow" style="color: #FFD700;">PLAN 3 • RECOMENDADO (TODO EN UNO)</span>
             <h3 class="card-title">Full: Core + Mensajería + Rutas</h3>
-            <div class="price-main" id="displayFull" style="color: #FFD700;">$9'800.000 COP</div>
-            <div class="price-sub" id="subFull">Tarifa fija por año lectivo</div>
-            <ul class="feature-list" style="font-size: 0.85rem; margin-bottom: 14px;">
+            <div class="price-main" id="displayFull" style="color: #FFD700;">$12'500.000 COP</div>
+            <div class="price-sub" id="subFull">Tarifa anual fija (151 a 250 alumnos)</div>
+            <ul class="feature-list" style="font-size: 0.84rem; margin-bottom: 12px;">
               <li>✓ Todo Core + Mensajería Oficial</li>
               <li>✓ Rastreo satelital GPS en tiempo real</li>
               <li>✓ App conductores y monitores</li>
               <li>✓ Alertas por proximidad de distancia</li>
-              <li>✓ Soporte técnico e inducción VIP</li>
+              <li>✓ Reemplaza apps externas de transporte</li>
             </ul>
-            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 8px; font-size: 0.82rem; color: #FFD700;">
-              ★ Máxima experiencia y tranquilidad para familias.
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 8px; font-size: 0.8rem; color: #FFD700;">
+              ★ Unifica colegio y transporte en 1 solo contrato.
             </div>
           </div>
         </div>
 
-        <div style="text-align: center; color: #A0AEC0; font-size: 0.85rem;">
-          * Los contratos anuales garantizan tarifa fija y congelada durante los 12 meses de servicio.
+        <div style="text-align: center; color: #CBD5E0; font-size: 0.84rem; background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px;">
+          💡 <strong>Economía por Centralización:</strong> Asumir un único contrato anual que integra toda la información evita los sobrecostos de contratar múltiples plataformas por separado.
         </div>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 13: CONDICIONES COMERCIALES Y BONIFICACIONES -->
+    <!-- SLIDE 14: CONDICIONES DEL SERVICIO Y BONIFICACIONES -->
     <!-- ===================================================================== -->
-    <section class="slide" id="slide-13">
+    <section class="slide" id="slide-14">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <div class="eyebrow">Términos Comerciales</div>
-          <h2 class="slide-title">Modalidades de Pago y Bonificaciones Especiales</h2>
+          <span class="eyebrow">Términos del Servicio & Valor Agregado</span>
+          <h2 class="slide-title">Alcance del Contrato Anual y Beneficios Incluidos</h2>
         </div>
 
         <div class="grid-2">
           <div class="card" style="background: var(--bg-dark);">
-            <h3 class="card-title">Modalidades de Pago Anual</h3>
-            <ul class="feature-list" style="margin-bottom: 20px;">
-              <li>
-                <span class="check-icon">💳</span>
-                <div>
-                  <strong>Opción 1: Contado Anual Anticipado (Recomendada)</strong>
-                  <p style="color: var(--text-muted); font-size: 0.88rem;">
-                    Descuento especial del <strong>8% de pronto pago</strong> sobre el valor total del contrato si se realiza en un solo desembolso al inicio del calendario escolar.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <span class="check-icon">📅</span>
-                <div>
-                  <strong>Opción 2: Dos Desembolsos Semestrales</strong>
-                  <p style="color: var(--text-muted); font-size: 0.88rem;">
-                    <strong>60%</strong> a la firma del convenio (enero/febrero) y <strong>40%</strong> al reinicio del segundo semestre escolar (junio/julio).
-                  </p>
-                </div>
-              </li>
+            <h3 class="card-title">Condiciones del Servicio y Alcance Opcional</h3>
+            <ul class="feature-list" style="margin-bottom: 16px;">
               <li>
                 <span class="check-icon">🔒</span>
                 <div>
-                  <strong>Garantía de Servicio Continuo</strong>
+                  <strong>Contrato Anual Unificado</strong>
                   <p style="color: var(--text-muted); font-size: 0.88rem;">
-                    Servicio garantizado e ininterrumpido durante todo el año lectivo sin riesgos de suspensión.
+                    Un solo convenio institucional para todo el año lectivo con tarifa fija garantizada, servicio continuo e ininterrumpido y sin costos adicionales por usuario.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="check-icon">🤝</span>
+                <div>
+                  <strong>Acuerdo Comercial Adaptable</strong>
+                  <p style="color: var(--text-muted); font-size: 0.88rem;">
+                    Esquema de contratación alineado con la planeación administrativa y el calendario escolar de la institución.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="check-icon">🌐</span>
+                <div>
+                  <strong>Sitio Web Institucional y Dominio .edu (Opcional)</strong>
+                  <p style="color: var(--text-muted); font-size: 0.88rem;">
+                    Si el colegio aún no cuenta con un sitio web oficial propio, puede incluirse dentro de la negociación junto con el apoyo de Aura para la gestión del dominio <strong>.edu</strong>.
                   </p>
                 </div>
               </li>
@@ -1042,14 +1613,14 @@
           </div>
 
           <div class="card" style="background: var(--gold-light); border-color: var(--accent-primary);">
-            <h3 class="card-title" style="color: var(--text-main);">Bonificaciones Incluidas</h3>
+            <h3 class="card-title" style="color: var(--text-main);">Bonificaciones Incluidas ($0 COP)</h3>
             <ul class="feature-list">
               <li>
                 <span class="check-icon">⭐</span>
                 <div>
                   <strong>Parametrización y Migración Inicial:</strong>
                   <p style="color: #55451F; font-size: 0.88rem;">
-                    Carga inicial de estudiantes, docentes y configuración del ambiente <strong style="color: #2E7D32;">100% Bonificada ($0 COP)</strong> (Valor habitual: $1'800.000 COP).
+                    Carga inicial de estudiantes, docentes, cursos, asignaturas y configuración del ambiente <strong style="color: #2E7D32;">100% Bonificada ($0 COP)</strong>.
                   </p>
                 </div>
               </li>
@@ -1065,9 +1636,9 @@
               <li>
                 <span class="check-icon">⭐</span>
                 <div>
-                  <strong>Actualizaciones y Soporte en la Nube:</strong>
+                  <strong>Infraestructura Cloud y Soporte Continuo:</strong>
                   <p style="color: #55451F; font-size: 0.88rem;">
-                    Mantenimiento preventivo, servidores de alta disponibilidad y copias de seguridad sin costos ocultos.
+                    Servidores de alta disponibilidad en Google Cloud, copias de seguridad automáticas y actualizaciones permanentes incluidas.
                   </p>
                 </div>
               </li>
@@ -1076,28 +1647,27 @@
         </div>
 
         <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">
-          * Tarifa mínima base de puesta en marcha para instituciones de menos de 100 estudiantes: $6'000.000 COP anuales.
+          * Todos los planes incluyen acompañamiento en el despliegue para garantizar una adopción rápida por parte de los padres de familia.
         </p>
       </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE 14: CIERRE Y PRÓXIMOS PASOS (MOUNTAIN 5 + SKOOLING) -->
+    <!-- SLIDE 15: CIERRE Y PRÓXIMOS PASOS (MOUNTAIN 5 + SKOOLING) -->
     <!-- ===================================================================== -->
-    <section class="slide dark" id="slide-14">
+    <section class="slide dark" id="slide-15">
       <div class="slide-accent-bar"></div>
       <div class="slide-content">
         <div>
-          <!-- BRAND LOGOS (MOUNTAIN 5 + SKOOLING BRAND) -->
           <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px;">
             <img src="presentation_assets/Mountain_5.png" alt="Aura Logo" class="brand-logo-hero">
             <div style="width: 2px; height: 48px; background: rgba(198, 161, 91, 0.4);"></div>
             <img src="presentation_assets/logo-full-dark.png" alt="Skooling" class="brand-skooling-hero">
           </div>
           
-          <div class="eyebrow">Comencemos</div>
+          <span class="eyebrow">Comencemos</span>
           <h2 class="slide-title" style="font-size: 38px; max-width: 900px;">
-            ¿Listos para transformar la experiencia escolar de su comunidad?
+            ¿Listos para centralizar y transformar la experiencia escolar de su comunidad?
           </h2>
         </div>
 
@@ -1105,8 +1675,8 @@
           <h3 style="color: var(--accent-primary); margin-bottom: 12px; font-size: 1.25rem;">Próximos Pasos Recomendados:</h3>
           <ol style="color: #E2E8F0; font-size: 1.05rem; line-height: 1.85; padding-left: 20px;">
             <li><strong>Demostración personalizada:</strong> Sesión en vivo de 30 minutos con el equipo directivo y coordinadores.</li>
-            <li><strong>Definición del rango de matrícula:</strong> Selección del paquete institucional y fecha de inicio.</li>
-            <li><strong>Firma de convenio y cronograma:</strong> Configuración del colegio e inducción previa al inicio de clases.</li>
+            <li><strong>Definición del rango de estudiantes:</strong> Selección del nivel modular institucional y fecha de inicio.</li>
+            <li><strong>Firma de convenio y cronograma:</strong> Parametrización bonificada del colegio e inducción previa al inicio de clases.</li>
           </ol>
         </div>
 
@@ -1125,9 +1695,556 @@
 
   </div>
 
+  <!-- ===================================================================== -->
+  <!-- CONTENEDOR 2: PROPUESTA COMERCIAL EJECUTIVA IMPRIMIBLE (4 HOJAS)      -->
+  <!-- ===================================================================== -->
+  <div class="proposal-container" id="proposalView">
+
+    <!-- =================================================================== -->
+    <!-- HOJA 1 DE 4: CASO DE NEGOCIO Y BENEFICIOS DE LA CENTRALIZACIÓN      -->
+    <!-- =================================================================== -->
+    <article class="proposal-page" id="prop-page-1">
+      <div class="prop-top-bar"></div>
+      <div class="prop-body">
+        <div>
+          <!-- Encabezado Corporativo -->
+          <div class="prop-header">
+            <div class="prop-header-logos">
+              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
+              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
+              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
+            </div>
+            <div class="prop-doc-meta">
+              <strong>Propuesta Comercial Ejecutiva</strong><br>
+              Dirigido a: Rectoría, Junta Directiva y Dirección Administrativa<br>
+              Respaldado por: Aura Soluciones e Innovación S.A.S. (aurasi.co)
+            </div>
+          </div>
+
+          <!-- Banner Principal -->
+          <div class="prop-hero-banner" style="margin-top: 6px;">
+            <span style="color: var(--accent-primary); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;">Ecosistema Educativo SaaS Todo-en-Uno</span>
+            <h1>SKOOLING: La vida escolar de su comunidad, centralizada en un solo lugar</h1>
+            <p>
+              Plataforma integral en la nube que unifica la <strong>gestión académica</strong>, la <strong>comunicación institucional certificada</strong> y el <strong>monitoreo satelital de rutas escolares (GPS)</strong> en un único Portal Web Directivo/Docente y una única App Móvil para las familias.
+            </p>
+          </div>
+
+          <!-- Sección 1: El Valor para el Decisor según su Escenario Actual -->
+          <div style="margin-top: 8px;">
+            <div class="prop-section-title">
+              1. Caso de Negocio para el Decisor: Dos Realidades Institucionales
+              <span>VALOR Y BENEFICIO INSTITUCIONAL</span>
+            </div>
+            <div class="prop-grid-2">
+              <div class="prop-box">
+                <h3 style="color: #B91C1C;">A. Si su colegio aún no tiene plataforma digital</h3>
+                <p style="margin-bottom: 4px;">
+                  Para una institución que opera con Excel, circulares físicas y grupos de WhatsApp, implementar Skooling <strong>no es un gasto adicional, sino una inversión con valor directo</strong>:
+                </p>
+                <ul class="prop-list">
+                  <li><span class="check-icon">✔</span> <div><strong>Valor agregado para la comunidad:</strong> La comunicación directa y oportuna entre la institución y las familias en todos los aspectos de la jornada se reconoce definitivamente como un sello de calidad para el colegio.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>Ahorro operativo y cero papel:</strong> Automatiza boletines en PDF, horarios, control de asistencia y comunicados en segundos.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>Protección laboral docente:</strong> Elimina el uso del WhatsApp personal de los profesores fuera del horario laboral.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>Adopción progresiva:</strong> Permite iniciar desde el Nivel 1 (Core Académico) con una inversión anual ajustada.</div></li>
+                </ul>
+              </div>
+
+              <div class="prop-box gold">
+                <h3 style="color: var(--text-main);">B. Si su colegio hoy usa plataformas fragmentadas</h3>
+                <p style="margin-bottom: 4px;">
+                  Muchos colegios sufren hoy la dispersión tecnológica: publican avisos en su sitio web, usan otra plataforma para notas, contratan una aplicación externa para rutas escolares y aun así envían mensajes por WhatsApp:
+                </p>
+                <ul class="prop-list">
+                  <li><span class="check-icon">✔</span> <div><strong>Fin a la información "regada":</strong> Cuando un padre debe revisar 3 o 4 fuentes distintas, termina perdiendo comunicados importantes. Skooling crea una <strong>Única Fuente de la Verdad</strong>.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>1 Sola App para Académico + Transporte:</strong> La plataforma del colegio por fin integra en vivo la ubicación GPS de la ruta escolar.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>Economía en un único contrato:</strong> Unificar la operación en una sola plataforma evita pagar licencias y cobros separados a múltiples proveedores.</div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 2: Tabla Comparativa de Impacto -->
+          <div style="margin-top: 8px;">
+            <div class="prop-section-title">
+              2. Comparativa de Impacto Operativo, Comunicacional y Financiero
+              <span>DIAGNÓSTICO COMPARATIVO</span>
+            </div>
+            <table class="prop-table">
+              <thead>
+                <tr>
+                  <th style="width: 22%;">Criterio Evaluado</th>
+                  <th style="width: 25%;">Operación Manual / Tradicional</th>
+                  <th style="width: 26%;">Sistemas Fragmentados (Múltiples Apps)</th>
+                  <th style="width: 27%; background: #1E3254; color: #FFD700;">Ecosistema Centralizado SKOOLING</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Fuente de Información para Padres</strong></td>
+                  <td>Agenda de papel, llamadas a secretaría y rumores en grupos de WhatsApp.</td>
+                  <td>Información "regada" entre página web, plataforma de notas, app de transporte y WhatsApp.</td>
+                  <td style="background: var(--gold-light); font-weight: 600;">1 Sola App oficial con todo: Clases, Agenda, Boletines, Mensajes y Rutas.</td>
+                </tr>
+                <tr>
+                  <td><strong>Monitoreo de Rutas Escolares</strong></td>
+                  <td>Incertidumbre total; llamadas constantes a portería por retrasos.</td>
+                  <td>Desconectado del sistema del colegio; requiere contratar otra aplicación externa por aparte.</td>
+                  <td style="background: var(--gold-light); font-weight: 600;">Integrado nativamente con mapa GPS en vivo y alertas de cercanía.</td>
+                </tr>
+                <tr>
+                  <td><strong>Efectividad en Comunicaciones</strong></td>
+                  <td>Circulares impresas extraviadas; sin certeza de quién leyó el aviso.</td>
+                  <td>Los padres omiten anuncios por fatiga digital al tener múltiples canales y claves.</td>
+                  <td style="background: var(--gold-light); font-weight: 600;">Broadcasts oficiales con notificación Push y confirmación de lectura.</td>
+                </tr>
+                <tr>
+                  <td><strong>Privacidad y Orden Institucional</strong></td>
+                  <td>Teléfonos personales de docentes expuestos a mensajes a deshoras.</td>
+                  <td>Experiencia inconsistente; a pesar de pagar software se sigue usando WhatsApp.</td>
+                  <td style="background: var(--gold-light); font-weight: 600;">Canal institucional 100% blindado, trazable y de alto prestigio.</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td><strong>Costo Total Anual</strong></td>
+                  <td>Alto costo oculto en papelería, reprocesos y desgaste administrativo.</td>
+                  <td><strong>Sobrecosto elevado:</strong> Doble o triple cobro (Licencia académica + App de rutas aparte).</td>
+                  <td style="background: #FDE68A; font-weight: 800; color: var(--text-main);">1 Único Contrato Anual centralizado, más económico que pagar proveedores separados.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Footer Hoja 1 -->
+        <div class="prop-footer">
+          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
+          <span>aurasi.co | contacto@aurasi.co</span>
+          <span><strong>Hoja 1 de 4</strong></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- =================================================================== -->
+    <!-- HOJA 2 DE 4: ALCANCE FUNCIONAL MODULAR Y RECORRIDO 360°             -->
+    <!-- =================================================================== -->
+    <article class="proposal-page" id="prop-page-2">
+      <div class="prop-top-bar"></div>
+      <div class="prop-body">
+        <div>
+          <!-- Encabezado Compacto -->
+          <div class="prop-header">
+            <div class="prop-header-logos">
+              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
+              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
+              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
+            </div>
+            <div class="prop-doc-meta">
+              <strong>Alcance Funcional & Ecosistema Unificado</strong><br>
+              Arquitectura Modular Web + Móvil (iOS & Android)
+            </div>
+          </div>
+
+          <!-- Sección 3: Los 3 Niveles Modulares -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              3. Arquitectura Modular Progresiva: Tres Niveles Adaptados al Colegio
+              <span>ALCANCE POR MÓDULO</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;">
+              La institución puede contratar desde la base operativa académica hasta el ecosistema completo todo-en-uno. Cada nivel superior incluye todas las funcionalidades del nivel anterior:
+            </p>
+            <div class="prop-grid-3">
+              <!-- Nivel 1 -->
+              <div class="prop-box">
+                <span style="font-size: 0.68rem; font-weight: 800; color: var(--accent-primary); text-transform: uppercase;">Nivel 1 • Base Digital</span>
+                <h3>Core Académico</h3>
+                <ul class="prop-list" style="margin-top: 6px;">
+                  <li><span class="check-icon">✓</span> Gestión de Cursos y Asignaturas.</li>
+                  <li><span class="check-icon">✓</span> <strong>Sistema de calificación configurable</strong> (escalas, periodos y ponderaciones).</li>
+                  <li><span class="check-icon">✓</span> Generación y descarga masiva de <strong>boletines oficiales en PDF</strong>.</li>
+                  <li><span class="check-icon">✓</span> Horarios semanales con validación automática de cruces docentes.</li>
+                  <li><span class="check-icon">✓</span> Control de asistencia y faltas justificadas/injustificadas.</li>
+                  <li><span class="check-icon">✓</span> Cargue masivo en 1 clic de alumnos, profesores y festivos.</li>
+                </ul>
+              </div>
+
+              <!-- Nivel 2 -->
+              <div class="prop-box gold">
+                <span style="font-size: 0.68rem; font-weight: 800; color: #856404; text-transform: uppercase;">Nivel 2 • Cero WhatsApp</span>
+                <h3>Core + Comunicación Oficial</h3>
+                <ul class="prop-list" style="margin-top: 6px;">
+                  <li><span class="check-icon">✓</span> <strong>Incluye 100% del Core Académico.</strong></li>
+                  <li><span class="check-icon">✓</span> <strong>Circulares digitales (Broadcasts)</strong> masivas o segmentadas por curso.</li>
+                  <li><span class="check-icon">✓</span> <strong>Confirmación de lectura certificada</strong> en tiempo real por cada acudiente.</li>
+                  <li><span class="check-icon">✓</span> Canal de mensajería oficial profesor-padre sin exponer números personales.</li>
+                  <li><span class="check-icon">✓</span> <strong>Calendario Maestro Web</strong> de eventos, tareas y actividades sincronizado con la App.</li>
+                  <li><span class="check-icon">✓</span> Notificaciones Push nativas e ingreso seguro a 1 clic (Google/Apple).</li>
+                </ul>
+              </div>
+
+              <!-- Nivel 3 -->
+              <div class="prop-box dark">
+                <span style="font-size: 0.68rem; font-weight: 800; color: #FFD700; text-transform: uppercase;">Nivel 3 • Unificación Total ★</span>
+                <h3 style="color: white;">Full: Core + Mensajería + Rutas</h3>
+                <ul class="prop-list" style="margin-top: 6px;">
+                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>Incluye Todo Core + Mensajería.</strong></li>
+                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>Skooling RouteManager:</strong> Mapa satelital en vivo con telemetría GPS del bus escolar.</li>
+                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>Alertas automáticas de cercanía</strong> cuando la ruta se aproxima al paradero.</li>
+                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>App para conductores y monitores</strong> con registro de abordaje y desabordaje por parada.</li>
+                  <li><span class="check-icon" style="color: #FFD700;">✓</span> Elimina por completo el pago de apps de transporte externas y las llamadas a portería.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 4: Recorrido 360 en 5 Etapas -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              4. Experiencia 360°: Cómo Skooling Acompaña Cada Momento de la Jornada
+              <span>1 SOLA APP PARA EL PADRE</span>
+            </div>
+            <div class="prop-journey-strip">
+              <div class="prop-journey-step">
+                <strong>01. La Mañana</strong>
+                <p>El padre consulta en la App el horario del día, uniforme, tareas y materiales antes de salir de casa.</p>
+              </div>
+              <div class="prop-journey-step">
+                <strong>02. El Trayecto</strong>
+                <p>Observa en el mapa GPS por dónde viene la ruta escolar y recibe alerta cuando está cerca del paradero.</p>
+              </div>
+              <div class="prop-journey-step">
+                <strong>03. En el Colegio</strong>
+                <p>Docentes registran asistencia, calificaciones parciales y anotaciones en el observador digital del alumno.</p>
+              </div>
+              <div class="prop-journey-step">
+                <strong>04. Comunicación</strong>
+                <p>Rectoría y coordinación emiten circulares oficiales con confirmación de lectura y calendario actualizado.</p>
+              </div>
+              <div class="prop-journey-step">
+                <strong>05. El Retorno</strong>
+                <p>Notificación Push inmediata cuando el hijo aborda la ruta de regreso y monitoreo hasta la puerta del hogar.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 5: Evidencia Visual del Producto -->
+          <div style="margin-top: 10px;">
+            <div class="prop-section-title">
+              5. Interfaz Moderna e Intuitiva: Portal Web Directivo + App Móvil Familias
+              <span>INTERFACES REALES</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1.35fr 0.85fr 0.85fr; gap: 10px; align-items: center; background: #F8FAFC; border: 1px solid var(--line); border-radius: 8px; padding: 10px;">
+              <div style="text-align: center;">
+                <img src="presentation_assets/calendar.png" alt="Calendario Maestro Web" style="width: 100%; height: 145px; object-fit: cover; object-position: top; border-radius: 6px; border: 1px solid #CBD5E0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <div style="font-size: 0.7rem; font-weight: 700; margin-top: 4px; color: var(--text-main);">Portal Web: Calendario Maestro y Gestión Académica</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="height: 145px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                  <img src="presentation_assets/Mobile_Sample.png" alt="App Unificada" style="height: 165px; width: auto; object-fit: contain;">
+                </div>
+                <div style="font-size: 0.7rem; font-weight: 700; margin-top: 4px; color: var(--text-main);">App Familias: 5 Módulos Unificados</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="height: 145px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                  <img src="presentation_assets/Routes.png" alt="Rutas GPS en Vivo" style="height: 155px; width: auto; object-fit: contain;">
+                </div>
+                <div style="font-size: 0.7rem; font-weight: 700; margin-top: 4px; color: var(--text-main);">Telemetría GPS Satelital en Vivo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Hoja 2 -->
+        <div class="prop-footer">
+          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
+          <span>aurasi.co | contacto@aurasi.co</span>
+          <span><strong>Hoja 2 de 4</strong></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- =================================================================== -->
+    <!-- HOJA 3 DE 4: PROPUESTA ECONÓMICA Y ANÁLISIS DE AHORRO               -->
+    <!-- =================================================================== -->
+    <article class="proposal-page" id="prop-page-3">
+      <div class="prop-top-bar"></div>
+      <div class="prop-body">
+        <div>
+          <!-- Encabezado Compacto -->
+          <div class="prop-header">
+            <div class="prop-header-logos">
+              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
+              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
+              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
+            </div>
+            <div class="prop-doc-meta">
+              <strong>Propuesta Económica e Inversión Anual</strong><br>
+              Valores expresados en Pesos Colombianos (COP) por Año Lectivo
+            </div>
+          </div>
+
+          <!-- Sección 6: Matriz Completa de Tarifas Anuales -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              6. Tabla Institucional de Inversión Anual por Rango de Estudiantes
+              <span>TARIFA PLANA ANUAL</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;">
+              Nuestro modelo de licenciamiento institucional ofrece una <strong>tarifa anual cerrada y predecible según el rango de estudiantes</strong>, sin cobros sorpresivos por alumno adicional dentro del tramo contratado:
+            </p>
+
+            <table class="prop-table" style="margin-bottom: 12px;">
+              <thead>
+                <tr>
+                  <th style="width: 28%;">Rango de Estudiantes</th>
+                  <th style="width: 22%;">Plan 1: Core Académico<br><span style="font-weight: 400; font-size: 0.68rem; color: #CBD5E0;">Cursos, Notas, Boletines PDF, Horarios</span></th>
+                  <th style="width: 23%;">Plan 2: Core + Mensajería<br><span style="font-weight: 400; font-size: 0.68rem; color: #CBD5E0;">+ Broadcasts, Acuse de Lectura, Agenda</span></th>
+                  <th style="width: 27%; background: #1E3254; color: #FFD700;">Plan 3: Full Todo-en-Uno ★<br><span style="font-weight: 400; font-size: 0.68rem; color: #FDE68A;">+ Rutas GPS en Vivo y App Monitores</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="prop-row-1">
+                  <td><strong>Rango 1:</strong> Hasta 150 Estudiantes</td>
+                  <td style="font-weight: 700;">$4'800.000 COP / año</td>
+                  <td style="font-weight: 700;">$7'200.000 COP / año</td>
+                  <td style="background: var(--gold-light); font-weight: 800; color: var(--text-main);">$9'800.000 COP / año</td>
+                </tr>
+                <tr id="prop-row-2" class="highlight-row">
+                  <td><strong>Rango 2:</strong> 151 a 250 Estudiantes <em>(Estándar)</em></td>
+                  <td style="font-weight: 700;">$6'500.000 COP / año</td>
+                  <td style="font-weight: 700;">$9'500.000 COP / año</td>
+                  <td style="background: #FDE68A; font-weight: 800; color: var(--text-main);">$12'500.000 COP / año</td>
+                </tr>
+                <tr id="prop-row-3">
+                  <td><strong>Rango 3:</strong> 251 a 400 Estudiantes</td>
+                  <td style="font-weight: 700;">$11'000.000 COP / año</td>
+                  <td style="font-weight: 700;">$16'000.000 COP / año</td>
+                  <td style="background: var(--gold-light); font-weight: 800; color: var(--text-main);">$22'000.000 COP / año</td>
+                </tr>
+                <tr id="prop-row-4">
+                  <td><strong>Rango 4:</strong> Más de 400 Estudiantes</td>
+                  <td colspan="3" style="text-align: center; font-weight: 700; color: var(--text-main);">
+                    Cotización corporativa a la medida con tarifa preferencial por volumen de estudiantes.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Sección 7: Análisis Financiero frente a Plataformas Separadas / Sin Plataforma -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              7. Análisis de Eficiencia Económica para el Comité Directivo
+              <span>POR QUÉ ES MÁS RENTABLE</span>
+            </div>
+            <div class="prop-grid-2">
+              <div class="prop-box gold">
+                <h3>💰 Economía por unificación en un único contrato</h3>
+                <p style="margin-bottom: 6px;">
+                  En los colegios que contratan por un lado su plataforma académica y por otro una aplicación de transporte escolar, el costo combinado para la institución y los padres supera ampliamente nuestra tarifa unificada:
+                </p>
+                <ul class="prop-list">
+                  <li><span class="check-icon">✔</span> <div><strong>Un solo contrato, toda la información centralizada:</strong> La unificación de la plataforma brinda una economía directa para el colegio al asumir un único convenio anual que integra la gestión académica, la mensajería oficial y el monitoreo GPS de rutas, eliminando el pago de franquicias, derechos o licencias de múltiples plataformas desconectadas.</div></li>
+                </ul>
+              </div>
+
+              <div class="prop-box">
+                <h3>📈 Valor agregado para colegios sin plataforma</h3>
+                <p style="margin-bottom: 6px;">
+                  Si su colegio hoy no cuenta con una solución digital, Skooling aporta beneficios inmediatos y tangibles para toda la institución:
+                </p>
+                <ul class="prop-list">
+                  <li><span class="check-icon">✔</span> <div><strong>Valor agregado reconocido por las familias:</strong> La comunicación directa y oportuna entre la institución y los hogares en todos los aspectos que ofrece la plataforma se reconoce definitivamente como un gran valor agregado para el colegio.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>Ahorro directo en papelería e impresiones:</strong> Boletines digitales en PDF, circulares sin papel y observador en línea.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>Descongestión operativa en secretaría y portería:</strong> Al tener los padres información en tiempo real de notas, eventos y ubicación de rutas, disminuyen notablemente las llamadas y consultas diarias.</div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 8: Qué incluye el servicio anual -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              8. Garantías Técnicas Incluidas en Todos los Planes Anuales
+              <span>INFRAESTRUCTURA CLOUD</span>
+            </div>
+            <div class="prop-box dark">
+              <div class="prop-grid-2" style="gap: 10px;">
+                <ul class="prop-list">
+                  <li><span class="check-icon" style="color: #FFD700;">⚡</span> <div><strong>Infraestructura Google Cloud:</strong> Servidores de alta velocidad y disponibilidad continua sin requerir equipos locales en el colegio.</div></li>
+                  <li><span class="check-icon" style="color: #FFD700;">🔒</span> <div><strong>Seguridad y Privacidad de Datos:</strong> Cifrado de extremo a extremo, control de roles y copias de seguridad automáticas diarias.</div></li>
+                </ul>
+                <ul class="prop-list">
+                  <li><span class="check-icon" style="color: #FFD700;">📱</span> <div><strong>Publicación Oficial en Tiendas:</strong> Acceso gratuito de descarga para todos los acudientes y docentes en App Store (iOS) y Google Play (Android).</div></li>
+                  <li><span class="check-icon" style="color: #FFD700;">🛡️</span> <div><strong>Tarifa Congelada 12 Meses:</strong> Garantía contractual de precio fijo durante la totalidad del año lectivo contratado.</div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Hoja 3 -->
+        <div class="prop-footer">
+          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
+          <span>aurasi.co | contacto@aurasi.co</span>
+          <span><strong>Hoja 3 de 4</strong></span>
+        </div>
+      </div>
+    </article>
+
+    <!-- =================================================================== -->
+    <!-- HOJA 4 DE 4: CONDICIONES, SITIO WEB OPCIONAL, BONIFICACIONES Y CIERRE-->
+    <!-- =================================================================== -->
+    <article class="proposal-page" id="prop-page-4">
+      <div class="prop-top-bar"></div>
+      <div class="prop-body">
+        <div>
+          <!-- Encabezado Compacto -->
+          <div class="prop-header">
+            <div class="prop-header-logos">
+              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
+              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
+              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
+            </div>
+            <div class="prop-doc-meta">
+              <strong>Términos del Servicio, Bonificaciones y Puesta en Marcha</strong><br>
+              Condiciones de Contratación y Despliegue Institucional
+            </div>
+          </div>
+
+          <!-- Sección 9: Condiciones del Servicio y Sitio Web Institucional Opcional -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              9. Condiciones del Servicio Anual y Alcance Complementario
+              <span>ACUERDO INSTITUCIONAL</span>
+            </div>
+            <div class="prop-grid-2">
+              <div class="prop-box gold">
+                <h3>🔒 Contrato Anual Unificado y Garantía de Servicio</h3>
+                <p>
+                  El servicio se suscribe bajo un <strong>único convenio anual por año lectivo</strong> con tarifa fija garantizada, asegurando operación continua e ininterrumpida para toda la comunidad educativa sin cobros adicionales por usuario activo.
+                </p>
+                <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--accent-primary); font-size: 0.74rem; color: #55451F;">
+                  Las condiciones y fechas de facturación se definen conjuntamente con la institución durante la mesa de negociación para ajustarse a su planeación presupuestal.
+                </div>
+              </div>
+
+              <div class="prop-box">
+                <h3>🌐 Sitio Web Institucional y Dominio .edu (Opcional)</h3>
+                <p>
+                  En caso de que la institución actualmente no cuente con un sitio web oficial propio, este componente puede contemplarse dentro de la negociación comercial:
+                </p>
+                <ul class="prop-list" style="margin-top: 6px;">
+                  <li><span class="check-icon">✔</span> <div><strong>Presencia web oficial:</strong> Posibilidad de incluir el diseño e implementación de la página institucional del colegio.</div></li>
+                  <li><span class="check-icon">✔</span> <div><strong>Gestión de dominio .edu:</strong> Aura puede encargarse del acompañamiento y gestión del dominio educativo oficial para la institución.</div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 10: Bonificaciones Especiales -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              10. Bonificaciones Especiales Incluidas Sin Costo ($0 COP)
+              <span>VALOR AGREGADO INCLUIDO</span>
+            </div>
+            <div class="prop-grid-3">
+              <div class="prop-box">
+                <span style="font-size: 0.7rem; font-weight: 800; color: #2E7D32;">100% BONIFICADO ($0 COP)</span>
+                <h3 style="margin-top: 2px;">Parametrización y Migración Inicial</h3>
+                <p>
+                  Configuración del ambiente del colegio, escalas de evaluación y carga masiva inicial de estudiantes, docentes, cursos, asignaturas y rutas sin costo adicional.
+                </p>
+              </div>
+
+              <div class="prop-box">
+                <span style="font-size: 0.7rem; font-weight: 800; color: #2E7D32;">INCLUIDO SIN COSTO</span>
+                <h3 style="margin-top: 2px;">Capacitación a Todo el Equipo</h3>
+                <p>
+                  Jornadas de entrenamiento guiado para personal directivo, secretaría académica, cuerpo docente, conductores y monitores de transporte escolar.
+                </p>
+              </div>
+
+              <div class="prop-box">
+                <span style="font-size: 0.7rem; font-weight: 800; color: #2E7D32;">SOPORTE VIP</span>
+                <h3 style="margin-top: 2px;">Kit de Lanzamiento para Familias</h3>
+                <p>
+                  Piezas digitales e instructivos listos para compartir con los padres de familia, garantizando una descarga y activación ágil de la App desde el primer día.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sección 11: Ruta de Implementación -->
+          <div style="margin-top: 12px;">
+            <div class="prop-section-title">
+              11. Cronograma de Puesta en Marcha
+              <span>IMPLEMENTACIÓN ÁGIL</span>
+            </div>
+            <table class="prop-table">
+              <thead>
+                <tr>
+                  <th style="width: 18%;">Fase</th>
+                  <th style="width: 32%;">Actividad Principal</th>
+                  <th style="width: 50%;">Entregable para la Institución</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Paso 1 • Fase Inicial</strong></td>
+                  <td>Demostración en vivo y definición de alcance</td>
+                  <td>Sesión ejecutiva de 30 minutos con rectoría/coordinación y selección del módulo y rango de estudiantes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Paso 2 • Configuración</strong></td>
+                  <td>Firma de convenio y parametrización Cloud</td>
+                  <td>Activación del entorno institucional, configuración del sistema de notas y carga masiva de bases de datos.</td>
+                </tr>
+                <tr>
+                  <td><strong>Paso 3 • Lanzamiento</strong></td>
+                  <td>Capacitación y salida en vivo</td>
+                  <td>Inducción práctica a docentes y monitores de ruta; entrega de accesos a padres de familia e inicio de operación.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Sección 12: Bloque de Contacto y Firma -->
+          <div style="margin-top: 14px;">
+            <div class="prop-box dark" style="padding: 18px 22px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                <div>
+                  <span style="color: var(--accent-primary); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;">Respaldo Empresarial</span>
+                  <h3 style="color: white; font-size: 1.1rem; margin: 2px 0 4px;">Aura Soluciones e Innovación S.A.S.</h3>
+                  <p style="font-size: 0.78rem; color: #CBD5E0; max-width: 470px;">
+                    Ingeniería de software colombiana enfocada en soluciones Cloud de alto impacto. Acompañamos a su institución durante todo el año escolar con soporte cercano y evolución continua.
+                  </p>
+                </div>
+                <div style="text-align: right; border-left: 1px solid rgba(198,161,91,0.35); padding-left: 20px; flex-shrink: 0;">
+                  <div style="color: var(--accent-primary); font-weight: 800; font-size: 0.95rem;">🌐 www.aurasi.co</div>
+                  <div style="color: white; font-size: 0.82rem; margin-top: 3px;">✉️ contacto@aurasi.co</div>
+                  <div style="color: #94A3B8; font-size: 0.72rem; margin-top: 6px;">Vigencia de la oferta: 30 días calendario</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Hoja 4 -->
+        <div class="prop-footer">
+          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
+          <span>aurasi.co | contacto@aurasi.co</span>
+          <span><strong>Hoja 4 de 4</strong></span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
   <script>
     let currentSlide = 1;
-    const totalSlides = 14;
+    const totalSlides = 15;
+    let currentView = 'deck'; // 'deck' or 'proposal'
 
     function updateCounter() {
       document.getElementById('counterText').textContent = `${currentSlide} / ${totalSlides}`;
@@ -1156,11 +2273,76 @@
       }
     }
 
+    // Track current slide on scroll when in deck mode
+    window.addEventListener('scroll', () => {
+      if (currentView !== 'deck') return;
+      const slides = document.querySelectorAll('.slide');
+      let bestSlide = currentSlide;
+      let bestDist = Infinity;
+      slides.forEach((s, idx) => {
+        const rect = s.getBoundingClientRect();
+        const dist = Math.abs(rect.top - 90);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestSlide = idx + 1;
+        }
+      });
+      if (bestSlide !== currentSlide) {
+        currentSlide = bestSlide;
+        updateCounter();
+      }
+    }, { passive: true });
+
+    // Switch between 15-Slide Presentation and 4-Page Commercial Proposal
+    function switchView(mode) {
+      currentView = mode;
+      const pageStyle = document.getElementById('dynamic-print-page');
+      if (mode === 'proposal') {
+        document.body.classList.add('mode-proposal');
+        document.getElementById('tab-proposal').classList.add('active');
+        document.getElementById('tab-deck').classList.remove('active');
+        pageStyle.textContent = '@page { size: letter portrait; margin: 0; }';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        document.body.classList.remove('mode-proposal');
+        document.getElementById('tab-deck').classList.add('active');
+        document.getElementById('tab-proposal').classList.remove('active');
+        pageStyle.textContent = '@page { size: 1280px 720px; margin: 0; }';
+      }
+    }
+
+    // Export 4-page Commercial Proposal PDF
+    function exportProposalPDF() {
+      const prevMode = currentView;
+      switchView('proposal');
+      setTimeout(() => {
+        window.print();
+        if (prevMode === 'deck') {
+          setTimeout(() => switchView('deck'), 400);
+        }
+      }, 150);
+    }
+
+    // Export 15-slide Presentation PDF
+    function exportDeckPDF() {
+      const prevMode = currentView;
+      switchView('deck');
+      setTimeout(() => {
+        window.print();
+        if (prevMode === 'proposal') {
+          setTimeout(() => switchView('proposal'), 400);
+        }
+      }, 150);
+    }
+
     // Keyboard navigation
     window.addEventListener('keydown', (e) => {
+      if (currentView !== 'deck') return;
       if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
         nextSlide();
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
         prevSlide();
       }
     });
@@ -1210,10 +2392,19 @@
       document.getElementById('subCore').textContent = data.sub;
       document.getElementById('subMsg').textContent = data.sub;
       document.getElementById('subFull').textContent = data.sub;
+
+      // Also highlight the selected range row in the 4-page printable proposal table
+      for (let i = 1; i <= 4; i++) {
+        const row = document.getElementById(`prop-row-${i}`);
+        if (row) {
+          row.classList.toggle('highlight-row', i === rangeNum);
+        }
+      }
     }
 
     // Initialize with Range 2 (151-250 students)
     selectRange(2);
+    updateCounter();
   </script>
 </body>
 </html>

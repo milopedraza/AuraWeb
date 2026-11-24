@@ -547,15 +547,15 @@
     }
 
     /* ===================================================================== */
-    /* PROPUESTA COMERCIAL EJECUTIVA (4 HOJAS IMPRIMIBLES)                   */
+    /* PROPUESTA COMERCIAL EJECUTIVA (VISOR PDF EMBEBIDO)                    */
     /* ===================================================================== */
     .proposal-container {
       width: 100%;
-      max-width: 880px;
-      padding: 28px 20px 80px;
+      max-width: 980px;
+      padding: 24px 20px 48px;
       display: none;
       flex-direction: column;
-      gap: 32px;
+      gap: 16px;
       align-items: center;
     }
 
@@ -563,19 +563,70 @@
       display: flex;
     }
 
-    .proposal-page {
-      width: 8.5in;
-      min-height: 10.5in;
-      background: #FFFFFF;
-      color: var(--text-main);
-      border-radius: 10px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    .pdf-toolbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(198, 161, 91, 0.28);
+      border-radius: 12px;
+      padding: 12px 18px;
+      color: white;
+    }
+
+    .pdf-toolbar-info {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      position: relative;
+      gap: 2px;
+    }
+
+    .pdf-toolbar-info strong {
+      font-size: 0.95rem;
+      color: white;
+    }
+
+    .pdf-toolbar-info span {
+      font-size: 0.78rem;
+      color: #A0AEC0;
+    }
+
+    .pdf-toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pdf-viewer-frame {
+      width: 100%;
+      height: calc(100vh - 170px);
+      min-height: 760px;
+      background: #1A2438;
+      border-radius: 12px;
+      border: 1px solid rgba(198, 161, 91, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
       overflow: hidden;
-      border: 1px solid var(--line);
+    }
+
+    .pdf-viewer-frame object,
+    .pdf-viewer-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .pdf-fallback {
+      padding: 48px 24px;
+      text-align: center;
+      color: #CBD5E0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
     }
 
     .prop-top-bar {
@@ -925,7 +976,8 @@
     </div>
 
     <div class="nav-buttons">
-      <a href="Propuesta_Comercial_Skooling_Aura.docx" download="Propuesta_Comercial_Skooling_Aura.docx" class="btn-ctrl btn-gold" title="Descargar la Propuesta Comercial en formato Microsoft Word (.docx) editable">📝 Descargar Propuesta (.docx)</a>
+      <a href="Propuesta_Comercial_Skooling_Aura.pdf" download="Propuesta_Comercial_Skooling_Aura.pdf" class="btn-ctrl btn-gold" title="Descargar la Propuesta Comercial en formato PDF listo para enviar">📄 Descargar Propuesta (.pdf)</a>
+      <a href="Propuesta_Comercial_Skooling_Aura.docx" download="Propuesta_Comercial_Skooling_Aura.docx" class="btn-ctrl" title="Descargar la Propuesta Comercial en formato Microsoft Word (.docx) editable">📝 Descargar Word (.docx)</a>
       <a href="Propuesta_Comercial_Skooling_Aura.pptx" download="Propuesta_Comercial_Skooling_Aura.pptx" class="btn-ctrl" title="Descargar las 15 diapositivas en formato PowerPoint (.pptx)">📊 Descargar PPTX (15 Slides)</a>
       <button class="btn-ctrl" onclick="exportDeckPDF()" title="Exportar las 15 diapositivas completas en PDF formato 16:9">🖨️ Exportar Presentación PDF</button>
       <span class="deck-nav-controls" style="display: inline-flex; align-items: center; gap: 6px;">
@@ -1698,547 +1750,31 @@
   <!-- ===================================================================== -->
   <!-- CONTENEDOR 2: PROPUESTA COMERCIAL EJECUTIVA IMPRIMIBLE (4 HOJAS)      -->
   <!-- ===================================================================== -->
+  <!-- CONTENEDOR 2: PROPUESTA EJECUTIVA (PDF EMBEBIDO)                      -->
+  <!-- ===================================================================== -->
   <div class="proposal-container" id="proposalView">
-
-    <!-- =================================================================== -->
-    <!-- HOJA 1 DE 4: CASO DE NEGOCIO Y BENEFICIOS DE LA CENTRALIZACIÓN      -->
-    <!-- =================================================================== -->
-    <article class="proposal-page" id="prop-page-1">
-      <div class="prop-top-bar"></div>
-      <div class="prop-body">
-        <div>
-          <!-- Encabezado Corporativo -->
-          <div class="prop-header">
-            <div class="prop-header-logos">
-              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
-              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
-              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
-            </div>
-            <div class="prop-doc-meta">
-              <strong>Propuesta Comercial Ejecutiva</strong><br>
-              Dirigido a: Rectoría, Junta Directiva y Dirección Administrativa<br>
-              Respaldado por: Aura Soluciones e Innovación S.A.S. (aurasi.co)
-            </div>
-          </div>
-
-          <!-- Banner Principal -->
-          <div class="prop-hero-banner" style="margin-top: 6px;">
-            <span style="color: var(--accent-primary); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;">Ecosistema Educativo SaaS Todo-en-Uno</span>
-            <h1>SKOOLING: La vida escolar de su comunidad, centralizada en un solo lugar</h1>
-            <p>
-              Plataforma integral en la nube que unifica la <strong>gestión académica</strong>, la <strong>comunicación institucional certificada</strong> y el <strong>monitoreo satelital de rutas escolares (GPS)</strong> en un único Portal Web Directivo/Docente y una única App Móvil para las familias.
-            </p>
-          </div>
-
-          <!-- Sección 1: El Valor para el Decisor según su Escenario Actual -->
-          <div style="margin-top: 8px;">
-            <div class="prop-section-title">
-              1. Caso de Negocio para el Decisor: Dos Realidades Institucionales
-              <span>VALOR Y BENEFICIO INSTITUCIONAL</span>
-            </div>
-            <div class="prop-grid-2">
-              <div class="prop-box">
-                <h3 style="color: #B91C1C;">A. Si su colegio aún no tiene plataforma digital</h3>
-                <p style="margin-bottom: 4px;">
-                  Para una institución que opera con Excel, circulares físicas y grupos de WhatsApp, implementar Skooling <strong>no es un gasto adicional, sino una inversión con valor directo</strong>:
-                </p>
-                <ul class="prop-list">
-                  <li><span class="check-icon">✔</span> <div><strong>Valor agregado para la comunidad:</strong> La comunicación directa y oportuna entre la institución y las familias en todos los aspectos de la jornada se reconoce definitivamente como un sello de calidad para el colegio.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>Ahorro operativo y cero papel:</strong> Automatiza boletines en PDF, horarios, control de asistencia y comunicados en segundos.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>Protección laboral docente:</strong> Elimina el uso del WhatsApp personal de los profesores fuera del horario laboral.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>Adopción progresiva:</strong> Permite iniciar desde el Nivel 1 (Core Académico) con una inversión anual ajustada.</div></li>
-                </ul>
-              </div>
-
-              <div class="prop-box gold">
-                <h3 style="color: var(--text-main);">B. Si su colegio hoy usa plataformas fragmentadas</h3>
-                <p style="margin-bottom: 4px;">
-                  Muchos colegios sufren hoy la dispersión tecnológica: publican avisos en su sitio web, usan otra plataforma para notas, contratan una aplicación externa para rutas escolares y aun así envían mensajes por WhatsApp:
-                </p>
-                <ul class="prop-list">
-                  <li><span class="check-icon">✔</span> <div><strong>Fin a la información "regada":</strong> Cuando un padre debe revisar 3 o 4 fuentes distintas, termina perdiendo comunicados importantes. Skooling crea una <strong>Única Fuente de la Verdad</strong>.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>1 Sola App para Académico + Transporte:</strong> La plataforma del colegio por fin integra en vivo la ubicación GPS de la ruta escolar.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>Economía en un único contrato:</strong> Unificar la operación en una sola plataforma evita pagar licencias y cobros separados a múltiples proveedores.</div></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sección 2: Tabla Comparativa de Impacto -->
-          <div style="margin-top: 8px;">
-            <div class="prop-section-title">
-              2. Comparativa de Impacto Operativo, Comunicacional y Financiero
-              <span>DIAGNÓSTICO COMPARATIVO</span>
-            </div>
-            <table class="prop-table">
-              <thead>
-                <tr>
-                  <th style="width: 22%;">Criterio Evaluado</th>
-                  <th style="width: 25%;">Operación Manual / Tradicional</th>
-                  <th style="width: 26%;">Sistemas Fragmentados (Múltiples Apps)</th>
-                  <th style="width: 27%; background: #1E3254; color: #FFD700;">Ecosistema Centralizado SKOOLING</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Fuente de Información para Padres</strong></td>
-                  <td>Agenda de papel, llamadas a secretaría y rumores en grupos de WhatsApp.</td>
-                  <td>Información "regada" entre página web, plataforma de notas, app de transporte y WhatsApp.</td>
-                  <td style="background: var(--gold-light); font-weight: 600;">1 Sola App oficial con todo: Clases, Agenda, Boletines, Mensajes y Rutas.</td>
-                </tr>
-                <tr>
-                  <td><strong>Monitoreo de Rutas Escolares</strong></td>
-                  <td>Incertidumbre total; llamadas constantes a portería por retrasos.</td>
-                  <td>Desconectado del sistema del colegio; requiere contratar otra aplicación externa por aparte.</td>
-                  <td style="background: var(--gold-light); font-weight: 600;">Integrado nativamente con mapa GPS en vivo y alertas de cercanía.</td>
-                </tr>
-                <tr>
-                  <td><strong>Efectividad en Comunicaciones</strong></td>
-                  <td>Circulares impresas extraviadas; sin certeza de quién leyó el aviso.</td>
-                  <td>Los padres omiten anuncios por fatiga digital al tener múltiples canales y claves.</td>
-                  <td style="background: var(--gold-light); font-weight: 600;">Broadcasts oficiales con notificación Push y confirmación de lectura.</td>
-                </tr>
-                <tr>
-                  <td><strong>Privacidad y Orden Institucional</strong></td>
-                  <td>Teléfonos personales de docentes expuestos a mensajes a deshoras.</td>
-                  <td>Experiencia inconsistente; a pesar de pagar software se sigue usando WhatsApp.</td>
-                  <td style="background: var(--gold-light); font-weight: 600;">Canal institucional 100% blindado, trazable y de alto prestigio.</td>
-                </tr>
-                <tr class="highlight-row">
-                  <td><strong>Costo Total Anual</strong></td>
-                  <td>Alto costo oculto en papelería, reprocesos y desgaste administrativo.</td>
-                  <td><strong>Sobrecosto elevado:</strong> Doble o triple cobro (Licencia académica + App de rutas aparte).</td>
-                  <td style="background: #FDE68A; font-weight: 800; color: var(--text-main);">1 Único Contrato Anual centralizado, más económico que pagar proveedores separados.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Footer Hoja 1 -->
-        <div class="prop-footer">
-          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
-          <span>aurasi.co | contacto@aurasi.co</span>
-          <span><strong>Hoja 1 de 4</strong></span>
-        </div>
+    <div class="pdf-toolbar">
+      <div class="pdf-toolbar-info">
+        <strong>Propuesta Comercial Ejecutiva — Skooling</strong>
+        <span>Documento oficial en PDF sincronizado con la plantilla editable (.docx)</span>
       </div>
-    </article>
-
-    <!-- =================================================================== -->
-    <!-- HOJA 2 DE 4: ALCANCE FUNCIONAL MODULAR Y RECORRIDO 360°             -->
-    <!-- =================================================================== -->
-    <article class="proposal-page" id="prop-page-2">
-      <div class="prop-top-bar"></div>
-      <div class="prop-body">
-        <div>
-          <!-- Encabezado Compacto -->
-          <div class="prop-header">
-            <div class="prop-header-logos">
-              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
-              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
-              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
-            </div>
-            <div class="prop-doc-meta">
-              <strong>Alcance Funcional & Ecosistema Unificado</strong><br>
-              Arquitectura Modular Web + Móvil (iOS & Android)
-            </div>
-          </div>
-
-          <!-- Sección 3: Los 3 Niveles Modulares -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              3. Arquitectura Modular Progresiva: Tres Niveles Adaptados al Colegio
-              <span>ALCANCE POR MÓDULO</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;">
-              La institución puede contratar desde la base operativa académica hasta el ecosistema completo todo-en-uno. Cada nivel superior incluye todas las funcionalidades del nivel anterior:
-            </p>
-            <div class="prop-grid-3">
-              <!-- Nivel 1 -->
-              <div class="prop-box">
-                <span style="font-size: 0.68rem; font-weight: 800; color: var(--accent-primary); text-transform: uppercase;">Nivel 1 • Base Digital</span>
-                <h3>Core Académico</h3>
-                <ul class="prop-list" style="margin-top: 6px;">
-                  <li><span class="check-icon">✓</span> Gestión de Cursos y Asignaturas.</li>
-                  <li><span class="check-icon">✓</span> <strong>Sistema de calificación configurable</strong> (escalas, periodos y ponderaciones).</li>
-                  <li><span class="check-icon">✓</span> Generación y descarga masiva de <strong>boletines oficiales en PDF</strong>.</li>
-                  <li><span class="check-icon">✓</span> Horarios semanales con validación automática de cruces docentes.</li>
-                  <li><span class="check-icon">✓</span> Control de asistencia y faltas justificadas/injustificadas.</li>
-                  <li><span class="check-icon">✓</span> Cargue masivo en 1 clic de alumnos, profesores y festivos.</li>
-                </ul>
-              </div>
-
-              <!-- Nivel 2 -->
-              <div class="prop-box gold">
-                <span style="font-size: 0.68rem; font-weight: 800; color: #856404; text-transform: uppercase;">Nivel 2 • Cero WhatsApp</span>
-                <h3>Core + Comunicación Oficial</h3>
-                <ul class="prop-list" style="margin-top: 6px;">
-                  <li><span class="check-icon">✓</span> <strong>Incluye 100% del Core Académico.</strong></li>
-                  <li><span class="check-icon">✓</span> <strong>Circulares digitales (Broadcasts)</strong> masivas o segmentadas por curso.</li>
-                  <li><span class="check-icon">✓</span> <strong>Confirmación de lectura certificada</strong> en tiempo real por cada acudiente.</li>
-                  <li><span class="check-icon">✓</span> Canal de mensajería oficial profesor-padre sin exponer números personales.</li>
-                  <li><span class="check-icon">✓</span> <strong>Calendario Maestro Web</strong> de eventos, tareas y actividades sincronizado con la App.</li>
-                  <li><span class="check-icon">✓</span> Notificaciones Push nativas e ingreso seguro a 1 clic (Google/Apple).</li>
-                </ul>
-              </div>
-
-              <!-- Nivel 3 -->
-              <div class="prop-box dark">
-                <span style="font-size: 0.68rem; font-weight: 800; color: #FFD700; text-transform: uppercase;">Nivel 3 • Unificación Total ★</span>
-                <h3 style="color: white;">Full: Core + Mensajería + Rutas</h3>
-                <ul class="prop-list" style="margin-top: 6px;">
-                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>Incluye Todo Core + Mensajería.</strong></li>
-                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>Skooling RouteManager:</strong> Mapa satelital en vivo con telemetría GPS del bus escolar.</li>
-                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>Alertas automáticas de cercanía</strong> cuando la ruta se aproxima al paradero.</li>
-                  <li><span class="check-icon" style="color: #FFD700;">✓</span> <strong>App para conductores y monitores</strong> con registro de abordaje y desabordaje por parada.</li>
-                  <li><span class="check-icon" style="color: #FFD700;">✓</span> Elimina por completo el pago de apps de transporte externas y las llamadas a portería.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sección 4: Recorrido 360 en 5 Etapas -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              4. Experiencia 360°: Cómo Skooling Acompaña Cada Momento de la Jornada
-              <span>1 SOLA APP PARA EL PADRE</span>
-            </div>
-            <div class="prop-journey-strip">
-              <div class="prop-journey-step">
-                <strong>01. La Mañana</strong>
-                <p>El padre consulta en la App el horario del día, uniforme, tareas y materiales antes de salir de casa.</p>
-              </div>
-              <div class="prop-journey-step">
-                <strong>02. El Trayecto</strong>
-                <p>Observa en el mapa GPS por dónde viene la ruta escolar y recibe alerta cuando está cerca del paradero.</p>
-              </div>
-              <div class="prop-journey-step">
-                <strong>03. En el Colegio</strong>
-                <p>Docentes registran asistencia, calificaciones parciales y anotaciones en el observador digital del alumno.</p>
-              </div>
-              <div class="prop-journey-step">
-                <strong>04. Comunicación</strong>
-                <p>Rectoría y coordinación emiten circulares oficiales con confirmación de lectura y calendario actualizado.</p>
-              </div>
-              <div class="prop-journey-step">
-                <strong>05. El Retorno</strong>
-                <p>Notificación Push inmediata cuando el hijo aborda la ruta de regreso y monitoreo hasta la puerta del hogar.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sección 5: Evidencia Visual del Producto -->
-          <div style="margin-top: 10px;">
-            <div class="prop-section-title">
-              5. Interfaz Moderna e Intuitiva: Portal Web Directivo + App Móvil Familias
-              <span>INTERFACES REALES</span>
-            </div>
-            <div style="display: grid; grid-template-columns: 1.35fr 0.85fr 0.85fr; gap: 10px; align-items: center; background: #F8FAFC; border: 1px solid var(--line); border-radius: 8px; padding: 10px;">
-              <div style="text-align: center;">
-                <img src="presentation_assets/calendar.png" alt="Calendario Maestro Web" style="width: 100%; height: 145px; object-fit: cover; object-position: top; border-radius: 6px; border: 1px solid #CBD5E0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                <div style="font-size: 0.7rem; font-weight: 700; margin-top: 4px; color: var(--text-main);">Portal Web: Calendario Maestro y Gestión Académica</div>
-              </div>
-              <div style="text-align: center;">
-                <div style="height: 145px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                  <img src="presentation_assets/Mobile_Sample.png" alt="App Unificada" style="height: 165px; width: auto; object-fit: contain;">
-                </div>
-                <div style="font-size: 0.7rem; font-weight: 700; margin-top: 4px; color: var(--text-main);">App Familias: 5 Módulos Unificados</div>
-              </div>
-              <div style="text-align: center;">
-                <div style="height: 145px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                  <img src="presentation_assets/Routes.png" alt="Rutas GPS en Vivo" style="height: 155px; width: auto; object-fit: contain;">
-                </div>
-                <div style="font-size: 0.7rem; font-weight: 700; margin-top: 4px; color: var(--text-main);">Telemetría GPS Satelital en Vivo</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Hoja 2 -->
-        <div class="prop-footer">
-          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
-          <span>aurasi.co | contacto@aurasi.co</span>
-          <span><strong>Hoja 2 de 4</strong></span>
-        </div>
+      <div class="pdf-toolbar-actions">
+        <a href="Propuesta_Comercial_Skooling_Aura.pdf" target="_blank" rel="noopener" class="btn-ctrl">↗️ Abrir PDF en nueva pestaña</a>
+        <a href="Propuesta_Comercial_Skooling_Aura.pdf" download="Propuesta_Comercial_Skooling_Aura.pdf" class="btn-ctrl btn-gold">📄 Descargar PDF</a>
+        <a href="Propuesta_Comercial_Skooling_Aura.docx" download="Propuesta_Comercial_Skooling_Aura.docx" class="btn-ctrl">📝 Descargar Word (.docx)</a>
       </div>
-    </article>
+    </div>
 
-    <!-- =================================================================== -->
-    <!-- HOJA 3 DE 4: PROPUESTA ECONÓMICA Y ANÁLISIS DE AHORRO               -->
-    <!-- =================================================================== -->
-    <article class="proposal-page" id="prop-page-3">
-      <div class="prop-top-bar"></div>
-      <div class="prop-body">
-        <div>
-          <!-- Encabezado Compacto -->
-          <div class="prop-header">
-            <div class="prop-header-logos">
-              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
-              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
-              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
-            </div>
-            <div class="prop-doc-meta">
-              <strong>Propuesta Económica e Inversión Anual</strong><br>
-              Valores expresados en Pesos Colombianos (COP) por Año Lectivo
-            </div>
+    <div class="pdf-viewer-frame">
+      <object data="Propuesta_Comercial_Skooling_Aura.pdf#view=FitH" type="application/pdf">
+        <iframe src="Propuesta_Comercial_Skooling_Aura.pdf#view=FitH" title="Propuesta Comercial Skooling PDF">
+          <div class="pdf-fallback">
+            <p>Tu navegador no permite previsualizar el PDF embebido directamente.</p>
+            <a href="Propuesta_Comercial_Skooling_Aura.pdf" target="_blank" rel="noopener" class="btn-ctrl btn-gold">📄 Abrir / Descargar Propuesta (.pdf)</a>
           </div>
-
-          <!-- Sección 6: Matriz Completa de Tarifas Anuales -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              6. Tabla Institucional de Inversión Anual por Rango de Estudiantes
-              <span>TARIFA PLANA ANUAL</span>
-            </div>
-            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;">
-              Nuestro modelo de licenciamiento institucional ofrece una <strong>tarifa anual cerrada y predecible según el rango de estudiantes</strong>, sin cobros sorpresivos por alumno adicional dentro del tramo contratado:
-            </p>
-
-            <table class="prop-table" style="margin-bottom: 12px;">
-              <thead>
-                <tr>
-                  <th style="width: 28%;">Rango de Estudiantes</th>
-                  <th style="width: 22%;">Plan 1: Core Académico<br><span style="font-weight: 400; font-size: 0.68rem; color: #CBD5E0;">Cursos, Notas, Boletines PDF, Horarios</span></th>
-                  <th style="width: 23%;">Plan 2: Core + Mensajería<br><span style="font-weight: 400; font-size: 0.68rem; color: #CBD5E0;">+ Broadcasts, Acuse de Lectura, Agenda</span></th>
-                  <th style="width: 27%; background: #1E3254; color: #FFD700;">Plan 3: Full Todo-en-Uno ★<br><span style="font-weight: 400; font-size: 0.68rem; color: #FDE68A;">+ Rutas GPS en Vivo y App Monitores</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="prop-row-1">
-                  <td><strong>Rango 1:</strong> Hasta 150 Estudiantes</td>
-                  <td style="font-weight: 700;">$4'800.000 COP / año</td>
-                  <td style="font-weight: 700;">$7'200.000 COP / año</td>
-                  <td style="background: var(--gold-light); font-weight: 800; color: var(--text-main);">$9'800.000 COP / año</td>
-                </tr>
-                <tr id="prop-row-2" class="highlight-row">
-                  <td><strong>Rango 2:</strong> 151 a 250 Estudiantes <em>(Estándar)</em></td>
-                  <td style="font-weight: 700;">$6'500.000 COP / año</td>
-                  <td style="font-weight: 700;">$9'500.000 COP / año</td>
-                  <td style="background: #FDE68A; font-weight: 800; color: var(--text-main);">$12'500.000 COP / año</td>
-                </tr>
-                <tr id="prop-row-3">
-                  <td><strong>Rango 3:</strong> 251 a 400 Estudiantes</td>
-                  <td style="font-weight: 700;">$11'000.000 COP / año</td>
-                  <td style="font-weight: 700;">$16'000.000 COP / año</td>
-                  <td style="background: var(--gold-light); font-weight: 800; color: var(--text-main);">$22'000.000 COP / año</td>
-                </tr>
-                <tr id="prop-row-4">
-                  <td><strong>Rango 4:</strong> Más de 400 Estudiantes</td>
-                  <td colspan="3" style="text-align: center; font-weight: 700; color: var(--text-main);">
-                    Cotización corporativa a la medida con tarifa preferencial por volumen de estudiantes.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Sección 7: Análisis Financiero frente a Plataformas Separadas / Sin Plataforma -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              7. Análisis de Eficiencia Económica para el Comité Directivo
-              <span>POR QUÉ ES MÁS RENTABLE</span>
-            </div>
-            <div class="prop-grid-2">
-              <div class="prop-box gold">
-                <h3>💰 Economía por unificación en un único contrato</h3>
-                <p style="margin-bottom: 6px;">
-                  En los colegios que contratan por un lado su plataforma académica y por otro una aplicación de transporte escolar, el costo combinado para la institución y los padres supera ampliamente nuestra tarifa unificada:
-                </p>
-                <ul class="prop-list">
-                  <li><span class="check-icon">✔</span> <div><strong>Un solo contrato, toda la información centralizada:</strong> La unificación de la plataforma brinda una economía directa para el colegio al asumir un único convenio anual que integra la gestión académica, la mensajería oficial y el monitoreo GPS de rutas, eliminando el pago de franquicias, derechos o licencias de múltiples plataformas desconectadas.</div></li>
-                </ul>
-              </div>
-
-              <div class="prop-box">
-                <h3>📈 Valor agregado para colegios sin plataforma</h3>
-                <p style="margin-bottom: 6px;">
-                  Si su colegio hoy no cuenta con una solución digital, Skooling aporta beneficios inmediatos y tangibles para toda la institución:
-                </p>
-                <ul class="prop-list">
-                  <li><span class="check-icon">✔</span> <div><strong>Valor agregado reconocido por las familias:</strong> La comunicación directa y oportuna entre la institución y los hogares en todos los aspectos que ofrece la plataforma se reconoce definitivamente como un gran valor agregado para el colegio.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>Ahorro directo en papelería e impresiones:</strong> Boletines digitales en PDF, circulares sin papel y observador en línea.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>Descongestión operativa en secretaría y portería:</strong> Al tener los padres información en tiempo real de notas, eventos y ubicación de rutas, disminuyen notablemente las llamadas y consultas diarias.</div></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sección 8: Qué incluye el servicio anual -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              8. Garantías Técnicas Incluidas en Todos los Planes Anuales
-              <span>INFRAESTRUCTURA CLOUD</span>
-            </div>
-            <div class="prop-box dark">
-              <div class="prop-grid-2" style="gap: 10px;">
-                <ul class="prop-list">
-                  <li><span class="check-icon" style="color: #FFD700;">⚡</span> <div><strong>Infraestructura Google Cloud:</strong> Servidores de alta velocidad y disponibilidad continua sin requerir equipos locales en el colegio.</div></li>
-                  <li><span class="check-icon" style="color: #FFD700;">🔒</span> <div><strong>Seguridad y Privacidad de Datos:</strong> Cifrado de extremo a extremo, control de roles y copias de seguridad automáticas diarias.</div></li>
-                </ul>
-                <ul class="prop-list">
-                  <li><span class="check-icon" style="color: #FFD700;">📱</span> <div><strong>Publicación Oficial en Tiendas:</strong> Acceso gratuito de descarga para todos los acudientes y docentes en App Store (iOS) y Google Play (Android).</div></li>
-                  <li><span class="check-icon" style="color: #FFD700;">🛡️</span> <div><strong>Tarifa Congelada 12 Meses:</strong> Garantía contractual de precio fijo durante la totalidad del año lectivo contratado.</div></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Hoja 3 -->
-        <div class="prop-footer">
-          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
-          <span>aurasi.co | contacto@aurasi.co</span>
-          <span><strong>Hoja 3 de 4</strong></span>
-        </div>
-      </div>
-    </article>
-
-    <!-- =================================================================== -->
-    <!-- HOJA 4 DE 4: CONDICIONES, SITIO WEB OPCIONAL, BONIFICACIONES Y CIERRE-->
-    <!-- =================================================================== -->
-    <article class="proposal-page" id="prop-page-4">
-      <div class="prop-top-bar"></div>
-      <div class="prop-body">
-        <div>
-          <!-- Encabezado Compacto -->
-          <div class="prop-header">
-            <div class="prop-header-logos">
-              <img src="presentation_assets/Mountain_3.png" alt="Aura" class="aura-h">
-              <div style="width: 1px; height: 32px; background: #CBD5E0;"></div>
-              <img src="presentation_assets/logo-full-Route.png" alt="Skooling" class="skooling-h">
-            </div>
-            <div class="prop-doc-meta">
-              <strong>Términos del Servicio, Bonificaciones y Puesta en Marcha</strong><br>
-              Condiciones de Contratación y Despliegue Institucional
-            </div>
-          </div>
-
-          <!-- Sección 9: Condiciones del Servicio y Sitio Web Institucional Opcional -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              9. Condiciones del Servicio Anual y Alcance Complementario
-              <span>ACUERDO INSTITUCIONAL</span>
-            </div>
-            <div class="prop-grid-2">
-              <div class="prop-box gold">
-                <h3>🔒 Contrato Anual Unificado y Garantía de Servicio</h3>
-                <p>
-                  El servicio se suscribe bajo un <strong>único convenio anual por año lectivo</strong> con tarifa fija garantizada, asegurando operación continua e ininterrumpida para toda la comunidad educativa sin cobros adicionales por usuario activo.
-                </p>
-                <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--accent-primary); font-size: 0.74rem; color: #55451F;">
-                  Las condiciones y fechas de facturación se definen conjuntamente con la institución durante la mesa de negociación para ajustarse a su planeación presupuestal.
-                </div>
-              </div>
-
-              <div class="prop-box">
-                <h3>🌐 Sitio Web Institucional y Dominio .edu (Opcional)</h3>
-                <p>
-                  En caso de que la institución actualmente no cuente con un sitio web oficial propio, este componente puede contemplarse dentro de la negociación comercial:
-                </p>
-                <ul class="prop-list" style="margin-top: 6px;">
-                  <li><span class="check-icon">✔</span> <div><strong>Presencia web oficial:</strong> Posibilidad de incluir el diseño e implementación de la página institucional del colegio.</div></li>
-                  <li><span class="check-icon">✔</span> <div><strong>Gestión de dominio .edu:</strong> Aura puede encargarse del acompañamiento y gestión del dominio educativo oficial para la institución.</div></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sección 10: Bonificaciones Especiales -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              10. Bonificaciones Especiales Incluidas Sin Costo ($0 COP)
-              <span>VALOR AGREGADO INCLUIDO</span>
-            </div>
-            <div class="prop-grid-3">
-              <div class="prop-box">
-                <span style="font-size: 0.7rem; font-weight: 800; color: #2E7D32;">100% BONIFICADO ($0 COP)</span>
-                <h3 style="margin-top: 2px;">Parametrización y Migración Inicial</h3>
-                <p>
-                  Configuración del ambiente del colegio, escalas de evaluación y carga masiva inicial de estudiantes, docentes, cursos, asignaturas y rutas sin costo adicional.
-                </p>
-              </div>
-
-              <div class="prop-box">
-                <span style="font-size: 0.7rem; font-weight: 800; color: #2E7D32;">INCLUIDO SIN COSTO</span>
-                <h3 style="margin-top: 2px;">Capacitación a Todo el Equipo</h3>
-                <p>
-                  Jornadas de entrenamiento guiado para personal directivo, secretaría académica, cuerpo docente, conductores y monitores de transporte escolar.
-                </p>
-              </div>
-
-              <div class="prop-box">
-                <span style="font-size: 0.7rem; font-weight: 800; color: #2E7D32;">SOPORTE VIP</span>
-                <h3 style="margin-top: 2px;">Kit de Lanzamiento para Familias</h3>
-                <p>
-                  Piezas digitales e instructivos listos para compartir con los padres de familia, garantizando una descarga y activación ágil de la App desde el primer día.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sección 11: Ruta de Implementación -->
-          <div style="margin-top: 12px;">
-            <div class="prop-section-title">
-              11. Cronograma de Puesta en Marcha
-              <span>IMPLEMENTACIÓN ÁGIL</span>
-            </div>
-            <table class="prop-table">
-              <thead>
-                <tr>
-                  <th style="width: 18%;">Fase</th>
-                  <th style="width: 32%;">Actividad Principal</th>
-                  <th style="width: 50%;">Entregable para la Institución</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Paso 1 • Fase Inicial</strong></td>
-                  <td>Demostración en vivo y definición de alcance</td>
-                  <td>Sesión ejecutiva de 30 minutos con rectoría/coordinación y selección del módulo y rango de estudiantes.</td>
-                </tr>
-                <tr>
-                  <td><strong>Paso 2 • Configuración</strong></td>
-                  <td>Firma de convenio y parametrización Cloud</td>
-                  <td>Activación del entorno institucional, configuración del sistema de notas y carga masiva de bases de datos.</td>
-                </tr>
-                <tr>
-                  <td><strong>Paso 3 • Lanzamiento</strong></td>
-                  <td>Capacitación y salida en vivo</td>
-                  <td>Inducción práctica a docentes y monitores de ruta; entrega de accesos a padres de familia e inicio de operación.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Sección 12: Bloque de Contacto y Firma -->
-          <div style="margin-top: 14px;">
-            <div class="prop-box dark" style="padding: 18px 22px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
-                <div>
-                  <span style="color: var(--accent-primary); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;">Respaldo Empresarial</span>
-                  <h3 style="color: white; font-size: 1.1rem; margin: 2px 0 4px;">Aura Soluciones e Innovación S.A.S.</h3>
-                  <p style="font-size: 0.78rem; color: #CBD5E0; max-width: 470px;">
-                    Ingeniería de software colombiana enfocada en soluciones Cloud de alto impacto. Acompañamos a su institución durante todo el año escolar con soporte cercano y evolución continua.
-                  </p>
-                </div>
-                <div style="text-align: right; border-left: 1px solid rgba(198,161,91,0.35); padding-left: 20px; flex-shrink: 0;">
-                  <div style="color: var(--accent-primary); font-weight: 800; font-size: 0.95rem;">🌐 www.aurasi.co</div>
-                  <div style="color: white; font-size: 0.82rem; margin-top: 3px;">✉️ contacto@aurasi.co</div>
-                  <div style="color: #94A3B8; font-size: 0.72rem; margin-top: 6px;">Vigencia de la oferta: 30 días calendario</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Hoja 4 -->
-        <div class="prop-footer">
-          <span><strong>Aura Soluciones e Innovación S.A.S.</strong> • Propuesta Comercial Skooling</span>
-          <span>aurasi.co | contacto@aurasi.co</span>
-          <span><strong>Hoja 4 de 4</strong></span>
-        </div>
-      </div>
-    </article>
-
+        </iframe>
+      </object>
+    </div>
   </div>
 
   <script>
